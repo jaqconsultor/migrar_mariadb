@@ -1,0 +1,1 @@
+copy vacio.mdb base_de_datos.mdb
