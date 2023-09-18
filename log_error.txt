@@ -1,0 +1,291 @@
+" CREATE TABLE baremo_quiru: CREATE TABLE baremo_quiru ( consecuti INTEGER   , cod_inter VARCHAR ( 3 )  , cod_clini VARCHAR ( 3 )  , ced_paciente VARCHAR ( 8 )  , nom_interven VARCHAR ( 300 )  , nom_paciente VARCHAR ( 200 )  , fecha_creado TIMESTAMP NULL DEFAULT NULL    , fecha_opera TIMESTAMP NULL DEFAULT NULL    , hora_opera TIME   , monto_opera DOUBLE   , tipo_rol VARCHAR ( 1 )  , pagada VARCHAR ( 1 )  , medico_prin INTEGER   , medico_aux INTEGER   , historia INTEGER   , diagnostico VARCHAR ( 100 )  , monto_abono DOUBLE   , monto_resta DOUBLE   , empre VARCHAR ( 30 )  , hora_fin TIME   , duracion INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...duracion INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE clinicas: CREATE TABLE clinicas ( cod_clin VARCHAR ( 3 )  , nom_clin VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE customer: CREATE TABLE customer ( `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , fname VARCHAR ( 30 )  , lname VARCHAR ( 30 )  , address VARCHAR ( 100 )  , city VARCHAR ( 20 )  , company_name VARCHAR ( 35 )  , phone VARCHAR ( 12 )  , telefono VARCHAR ( 12 )  , state VARCHAR ( 2 )  , zip VARCHAR ( 10 )  , sms VARCHAR ( 1 )  , email VARCHAR ( 60 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...TABLE customer ( [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE department: CREATE TABLE department ( dept_id INTEGER   , dept_name VARCHAR ( 40 )  , dept_head_id INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._head_id INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE detalles_factura_cliente: CREATE TABLE detalles_factura_cliente ( cod_inventario VARCHAR ( 2 )  , numfactura INTEGER   , tipo_articulo VARCHAR ( 25 )  , nombre VARCHAR ( 50 )  , precio DOUBLE   , descuento DOUBLE   , cantidad INTEGER   , fecha_doc TIMESTAMP NULL DEFAULT NULL    , tipo_precio VARCHAR ( 3 )  , total_articulo DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._articulo DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE detalles_presupuesto_plantilla: CREATE TABLE detalles_presupuesto_plantilla ( cod_inventario VARCHAR ( 2 )  , consecutivo INTEGER   , tipo_articulo VARCHAR ( 25 )  , nombre VARCHAR ( 50 )  , precio DOUBLE   , descuento DOUBLE   , cantidad INTEGER   , fecha_doc TIMESTAMP NULL DEFAULT NULL    , tipo_documento VARCHAR ( 3 )  , total_articulo DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._articulo DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE diagnostico_paciente: CREATE TABLE diagnostico_paciente ( nrohistoria INTEGER   , nroconsulta INTEGER   , codediagnostico VARCHAR ( 5 )  , orden INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...) , orden INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE diagnosticos: CREATE TABLE diagnosticos ( codediagnostico VARCHAR ( 5 )  , descripcion VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 100 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE dias_semana: CREATE TABLE dias_semana ( fecha DATETIME   , dia_semana VARCHAR ( 10 )  , semana INTEGER   , ano INTEGER   , descripcion VARCHAR ( 100 )  , tipo_dia VARCHAR ( 10 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 10 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE doctores: CREATE TABLE doctores ( cedula BIGINT ( 15 )  , apellidos VARCHAR ( 30 )  , nombres VARCHAR ( 30 )  , clinica VARCHAR ( 60 )  , direccion MEDIUMTEXT   , telefono VARCHAR ( 108 )  , ciudad VARCHAR ( 30 )  , nota MEDIUMTEXT   , codeespecial VARCHAR ( 3 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '(' in ...( cedula BIGINT [(] 15 ) , apellidos..."
+ 
+" CREATE TABLE emision_pagos: CREATE TABLE emision_pagos ( nro_emision DOUBLE   , fecha_emision DATETIME   , descripcion VARCHAR ( 100 )  , cod_banco VARCHAR ( 6 )  , estado VARCHAR ( 1 )  , monto_pagar DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._pagar DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE emision_pagos_detalle: CREATE TABLE emision_pagos_detalle ( nro_registro DOUBLE   , nro_emision DOUBLE   , nro_cxp DOUBLE   , nro_mov DOUBLE   , origen_cxp VARCHAR ( 2 )  , cxp_codigo VARCHAR ( 20 )  , cxp_descripcion VARCHAR ( 150 )  , fecha_emision DATETIME   , nro_documento VARCHAR ( 100 )  , tip_documento VARCHAR ( 2 )  , saldo_pagar DOUBLE   , monto_pagar DOUBLE   , estado VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE employee: CREATE TABLE employee ( emp_id INTEGER   , manager_id INTEGER   , emp_fname VARCHAR ( 30 )  , emp_lname VARCHAR ( 30 )  , dept_id INTEGER   , street VARCHAR ( 40 )  , city VARCHAR ( 20 )  , state VARCHAR ( 4 )  , zip_code VARCHAR ( 9 )  , phone VARCHAR ( 10 )  , status VARCHAR ( 1 )  , ss_number VARCHAR ( 11 )  , salary DOUBLE   , start_date DATETIME   , termination_date DATETIME   , birth_date DATETIME   , bene_health_ins VARCHAR ( 1 )  , bene_life_ins VARCHAR ( 1 )  , bene_day_care VARCHAR ( 1 )  , sex VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE especial: CREATE TABLE especial ( codeespecial VARCHAR ( 3 )  , especialidad VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE evolucion: CREATE TABLE evolucion ( especialidad VARCHAR ( 100 )  , ciudad VARCHAR ( 20 )  , logo VARCHAR ( 500 )  , linea_1 VARCHAR ( 90 )  , linea_2 VARCHAR ( 90 )  , linea_3 VARCHAR ( 90 )  , lineag_1 VARCHAR ( 115 )  , lineag_2 VARCHAR ( 115 )  , clave INTEGER   , fecha DATETIME   , rif VARCHAR ( 100 )  , reporte_vacio VARCHAR ( 1 )  , moneda VARCHAR ( 10 )  , impuesto VARCHAR ( 20 )  , por_impues DOUBLE   , am_pm VARCHAR ( 1 )  , cantidad_paciente INTEGER   , lunes_i TIME   , lunes_f TIME   , martes_i TIME   , martes_f TIME   , miercoles_i TIME   , miercoles_f TIME   , jueves_i TIME   , jueves_f TIME   , vienes_i TIME   , viernes_f TIME   , sabado_i TIME   , sabado_f TIME   , tiempo_paci INTEGER   , domingo_i TIME   , domigo_f TIME   , lunes VARCHAR ( 1 )  , martes VARCHAR ( 1 )  , miercoles VARCHAR ( 1 )  , jueves VARCHAR ( 1 )  , viernes VARCHAR ( 1 )  , sabado VARCHAR ( 1 )  , domingo VARCHAR ( 1 )  , feriado VARCHAR ( 100 )  , cedula VARCHAR ( 20 )  , min_salud VARCHAR ( 20 )  , col_med VARCHAR ( 20 )  , cita_previa VARCHAR ( 1 )  , telefono VARCHAR ( 20 )  , cobra_honorarios VARCHAR ( 1 )  , por_cobranza DOUBLE   , por_retención_seg DOUBLE   , por_retención_part DOUBLE   , accionista VARCHAR ( 1 )  , consultorio VARCHAR ( 10 )  , contrasena VARCHAR ( 20 )  , paga_iva VARCHAR ( 1 )  , sms_proveedor VARCHAR ( 1 )  , sms_user VARCHAR ( 20 )  , sms_clave VARCHAR ( 20 )  , sms_cantidad_total INTEGER   , sms_telefono_llamada VARCHAR ( 30 )  , sms_sexo_medico VARCHAR ( 1 )  , correo_med VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 100 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE examen_fisico: CREATE TABLE examen_fisico ( nrohistoria INTEGER   , nroconsulta INTEGER   , cardiopulmonal MEDIUMTEXT   , abdomen MEDIUMTEXT   , extremidades MEDIUMTEXT   , otros MEDIUMTEXT   , electrocardiograma MEDIUMTEXT   , rx_de_torax MEDIUMTEXT   , laboratorio MEDIUMTEXT   , riesgo_operatorio MEDIUMTEXT   , sugerencias MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE examen_obs: CREATE TABLE examen_obs ( numhistoria INTEGER   , numconsulta INTEGER   , observacion MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE examen_paciente: CREATE TABLE examen_paciente ( nrohistoria INTEGER   , nroconsulta INTEGER   , codeexamen VARCHAR ( 8 )  , resultado VARCHAR ( 30 )  , vinculante VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE examenes: CREATE TABLE examenes ( codeexamen VARCHAR ( 8 )  , examen VARCHAR ( 100 )  , codetipo VARCHAR ( 10 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 10 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE factura_cliente: CREATE TABLE factura_cliente ( numfactura INTEGER   , cedu_rif VARCHAR ( 15 )  , fecha_factura DATETIME   , fecha_vence_fact DATETIME   , fecha_cance_fact DATETIME   , cliente VARCHAR ( 2 )  , status_factura VARCHAR ( 1 )  , tipo_factura VARCHAR ( 1 )  , paciente VARCHAR ( 10 )  , nom_paciente VARCHAR ( 60 )  , tipo_precio VARCHAR ( 1 )  , nro_orden VARCHAR ( 10 )  , total_costo DOUBLE   , total_neto DOUBLE   , total_bruto DOUBLE   , total_final DOUBLE   , total_descuento DOUBLE   , descuento_linea DOUBLE   , notas MEDIUMTEXT   , hora_documento TIME   , monto_pac DOUBLE   , monto_emp DOUBLE   , numero_consulta INTEGER   , numero_historia INTEGER   , tipo_doc VARCHAR ( 3 )  , medico INTEGER   , nro_cxp DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE facturas_compras: CREATE TABLE facturas_compras ( id_factura_compra DOUBLE   , cod_prov VARCHAR ( 6 )  , id_tipo_concepto VARCHAR ( 4 )  , fecha DATETIME   , estado VARCHAR ( 1 )  , nro_seniat VARCHAR ( 25 )  , nro_factura VARCHAR ( 25 )  , mto_neto DOUBLE   , mto_porc_iva DOUBLE   , mto_iva DOUBLE   , mto_porc_ret_iva DOUBLE   , mto_ret_iva DOUBLE   , mto_porc_ret_isrl DOUBLE   , mto_ret_isrl DOUBLE   , mto_total_general DOUBLE   , nro_cxp DOUBLE   , mto_total DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...mto_total DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE facturas_compras_detalle: CREATE TABLE facturas_compras_detalle ( id_registro DOUBLE   , id_fac_prov VARCHAR ( 6 )  , des_concepto VARCHAR ( 100 )  , cantidad DOUBLE   , monto DOUBLE   , monto_total DOUBLE   , id_factura_compra DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._compra DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE formato_print: CREATE TABLE formato_print ( codigo VARCHAR ( 4 )  , titulo VARCHAR ( 200 )  , descripcion MEDIUMTEXT   , tipo VARCHAR ( 10 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE gsistema: CREATE TABLE gsistema ( id_medico INTEGER   , nomcorto VARCHAR ( 30 )  , clave VARCHAR ( 6 )  , ulthisto INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...ulthisto INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE his_con_pre_factura: CREATE TABLE his_con_pre_factura ( id_registro DOUBLE   , numhistoria INTEGER   , nroconsulta INTEGER   , codigo VARCHAR ( 8 )  , descripcion VARCHAR ( 45 )  , cantidad DOUBLE   , monto DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..., monto DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE hospitalizacion: CREATE TABLE hospitalizacion ( nrohistoria INTEGER   , nroconsulta INTEGER   , diagprev MEDIUMTEXT   , indiprev MEDIUMTEXT   , dieta MEDIUMTEXT   , habitacion VARCHAR ( 1 )  , hospital VARCHAR ( 60 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE imagen_consulta: CREATE TABLE imagen_consulta ( nrohistoria INTEGER   , nroconsulta INTEGER   , observacion MEDIUMTEXT   , imagen VARCHAR ( 256 )  , orden INTEGER   , tipo VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE imagen_pacientes: CREATE TABLE imagen_pacientes ( nrohistoria INTEGER   , imagen VARCHAR ( 256 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 256 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE implante: CREATE TABLE implante ( historia INTEGER   , consulta INTEGER   , fecha_reporte DATETIME   , fecha_opera DATETIME   , diagnostico MEDIUMTEXT   , plan_operatorio MEDIUMTEXT   , texto MEDIUMTEXT   , estabilizada VARCHAR ( 1 )  , componente_femoral VARCHAR ( 1 )  , componente_tibial VARCHAR ( 10 )  , componente_tibial_it VARCHAR ( 10 )  , componente_pastelar VARCHAR ( 1 )  , reque_metilmeticatrilato VARCHAR ( 1 )  , reque_metilmeticatrilato_cant VARCHAR ( 10 )  , reque_steridrape VARCHAR ( 1 )  , reque_steridrape_cant VARCHAR ( 10 )  , reque_coban_esteril VARCHAR ( 1 )  , reque_coban_esteril_cant VARCHAR ( 10 )  , reque_autosutura VARCHAR ( 1 )  , reque_autosutura_cant VARCHAR ( 10 )  , reque_orthopack VARCHAR ( 1 )  , reque_orthopack_cant VARCHAR ( 10 )  , sistema VARCHAR ( 100 )  , marca VARCHAR ( 20 )  , tipo VARCHAR ( 20 )  , puro_texto MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE informe: CREATE TABLE informe ( nrohistoria INTEGER   , nroconsulta INTEGER   , para VARCHAR ( 50 )  , descripcion MEDIUMTEXT   , fecha DATETIME   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE intenven_servi: CREATE TABLE intenven_servi ( codigo VARCHAR ( 3 )  , nombre VARCHAR ( 300 )  , precio_principal DOUBLE   , precio_auxiliar DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._auxiliar DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE interven_consulta: CREATE TABLE interven_consulta ( historia INTEGER   , consulta INTEGER   , codigo_inter VARCHAR ( 3 )  , detalle MEDIUMTEXT   , descripcion VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE listado: CREATE TABLE listado ( tipo VARCHAR ( 5 )  , descripcion_tipo VARCHAR ( 30 )  , segundo VARCHAR ( 5 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 5 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE motivo_cita: CREATE TABLE motivo_cita ( codigo VARCHAR ( 10 )  , tipo_atencion VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 100 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE motivo_consulta_paciente: CREATE TABLE motivo_consulta_paciente ( codemotivo VARCHAR ( 4 )  , nrohistoria INTEGER   , nroconsulta INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE motivo_factura: CREATE TABLE motivo_factura ( codigo VARCHAR ( 8 )  , descripcion VARCHAR ( 45 )  , monto DOUBLE   , monto_seg DOUBLE   , tipo VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE motivo_factura_prov: CREATE TABLE motivo_factura_prov ( id_fac_prov VARCHAR ( 6 )  , des_concepto VARCHAR ( 100 )  , monto DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...) , monto DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE motivos_consulta: CREATE TABLE motivos_consulta ( codemotivo VARCHAR ( 4 )  , descripcion VARCHAR ( 40 )  , tipo VARCHAR ( 2 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 2 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE operadores: CREATE TABLE operadores ( primera VARCHAR ( 15 )  , segunda VARCHAR ( 10 )  , nonbre VARCHAR ( 50 )  , nivel VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE orden_ingreso: CREATE TABLE orden_ingreso ( historia INTEGER   , consulta INTEGER   , fecha_operacion DATETIME   , fecha_reporte DATETIME   , texto MEDIUMTEXT   , idx MEDIUMTEXT   , reco_ingresar VARCHAR ( 1 )  , reco_depi VARCHAR ( 1 )  , reco_llevar VARCHAR ( 1 )  , reco_cedroxin VARCHAR ( 1 )  , reco_ejercicios VARCHAR ( 1 )  , reco_terapia VARCHAR ( 1 )  , reco_control VARCHAR ( 1 )  , reco_higiene VARCHAR ( 1 )  , reco_ropa VARCHAR ( 1 )  , reco_tomar VARCHAR ( 1 )  , reco_clexane VARCHAR ( 1 )  , reco_ejercicios_res VARCHAR ( 1 )  , reco_sangre VARCHAR ( 1 )  , reco_avisar VARCHAR ( 1 )  , detalle MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE ortopedia: CREATE TABLE ortopedia ( nrohistoria INTEGER   , nroconsulta INTEGER   , botas VARCHAR ( 1 )  , zapatos VARCHAR ( 1 )  , soporte VARCHAR ( 6 )  , thomas VARCHAR ( 8 )  , normal VARCHAR ( 1 )  , tacon_int VARCHAR ( 5 )  , tacon_ext VARCHAR ( 5 )  , suela_int VARCHAR ( 5 )  , suela_ext VARCHAR ( 5 )  , borde_int_rect VARCHAR ( 1 )  , borde_int_abdu VARCHAR ( 1 )  , suela_normal VARCHAR ( 1 )  , suela_antirres VARCHAR ( 1 )  , aparatos VARCHAR ( 20 )  , observacion MEDIUMTEXT   , plantilla VARCHAR ( 1 )  , aae VARCHAR ( 15 )  , api VARCHAR ( 7 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE p_ante: CREATE TABLE p_ante ( codante VARCHAR ( 4 )  , codtipo VARCHAR ( 2 )  , descrip VARCHAR ( 40 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 40 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE p_diagno: CREATE TABLE p_diagno ( codiagn VARCHAR ( 5 )  , descrip VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE p_epecial: CREATE TABLE p_epecial ( codespe VARCHAR ( 3 )  , especiali VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE p_examen: CREATE TABLE p_examen ( codexa VARCHAR ( 8 )  , codetip VARCHAR ( 10 )  , examen VARCHAR ( 45 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 45 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE p_motic: CREATE TABLE p_motic ( codmoti VARCHAR ( 4 )  , descrip VARCHAR ( 40 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 40 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE p_seg: CREATE TABLE p_seg ( codeseg VARCHAR ( 3 )  , nombre VARCHAR ( 60 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 60 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE p_tipoe: CREATE TABLE p_tipoe ( codexam VARCHAR ( 10 )  , descrip VARCHAR ( 40 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 40 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE paciente_no_regi: CREATE TABLE paciente_no_regi ( registro BIGINT ( 5 )  , apellidos VARCHAR ( 100 )  , nombres VARCHAR ( 100 )  , celular VARCHAR ( 30 )  , motivo VARCHAR ( 10 )  , fecha DATETIME   , medico INTEGER   , registrado VARCHAR ( 1 )  , hora TIME   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '(' in ...( registro BIGINT [(] 5 ) , apellidos..."
+ 
+" CREATE TABLE pacientes: CREATE TABLE pacientes ( nac VARCHAR ( 1 )  , cedula VARCHAR ( 8 )  , apellidos VARCHAR ( 50 )  , nombres VARCHAR ( 50 )  , sexo VARCHAR ( 1 )  , fnacimiento DATETIME   , lnacimiento VARCHAR ( 30 )  , codeestado VARCHAR ( 1 )  , direccion VARCHAR ( 200 )  , telefono VARCHAR ( 20 )  , fingreso DATETIME   , escolaridad VARCHAR ( 60 )  , ocupacion VARCHAR ( 60 )  , codesegemp VARCHAR ( 3 )  , numhistoria INTEGER   , foto_pac VARCHAR ( 300 )  , profesion VARCHAR ( 50 )  , email VARCHAR ( 100 )  , dependencia VARCHAR ( 30 )  , medico INTEGER   , historia_aa VARCHAR ( 10 )  , categoria VARCHAR ( 10 )  , sms VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pago_quiru: CREATE TABLE pago_quiru ( cod_pagos INTEGER   , consecuti INTEGER   , fecha DATETIME   , monto_total DOUBLE   , abono DOUBLE   , resta DOUBLE   , pago VARCHAR ( 1 )  , hora_pago TIME   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..., hora_pago TIME , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE palm_lista: CREATE TABLE palm_lista ( id_codigo INTEGER   , nombre_tabla VARCHAR ( 12 )  , ordinal INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..., ordinal INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pantece: CREATE TABLE pantece ( nhisto INTEGER   , codante VARCHAR ( 4 )  , detalle VARCHAR ( 250 )  , tipo VARCHAR ( 2 )  , descrip VARCHAR ( 50 )  , consul INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..., consul INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pbcatcol: CREATE TABLE pbcatcol ( pbc_tnam VARCHAR ( 129 )  , pbc_tid INTEGER   , pbc_ownr VARCHAR ( 129 )  , pbc_cnam VARCHAR ( 129 )  , pbc_cid SMALLINT   , pbc_labl VARCHAR ( 254 )  , pbc_lpos SMALLINT   , pbc_hdr VARCHAR ( 254 )  , pbc_hpos SMALLINT   , pbc_jtfy SMALLINT   , pbc_mask VARCHAR ( 31 )  , pbc_case SMALLINT   , pbc_hght SMALLINT   , pbc_wdth SMALLINT   , pbc_ptrn VARCHAR ( 31 )  , pbc_bmap VARCHAR ( 1 )  , pbc_init VARCHAR ( 254 )  , pbc_cmnt VARCHAR ( 254 )  , pbc_edit VARCHAR ( 31 )  , pbc_tag VARCHAR ( 254 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 254 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pbcatedt: CREATE TABLE pbcatedt ( pbe_name VARCHAR ( 30 )  , pbe_edit VARCHAR ( 254 )  , pbe_type SMALLINT   , pbe_cntr INTEGER   , pbe_seqn SMALLINT   , pbe_flag INTEGER   , pbe_work VARCHAR ( 32 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 32 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pbcatfmt: CREATE TABLE pbcatfmt ( pbf_name VARCHAR ( 30 )  , pbf_frmt VARCHAR ( 254 )  , pbf_type SMALLINT   , pbf_cntr INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...pbf_cntr INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pbcattbl: CREATE TABLE pbcattbl ( pbt_tnam VARCHAR ( 129 )  , pbt_tid INTEGER   , pbt_ownr VARCHAR ( 129 )  , pbd_fhgt SMALLINT   , pbd_fwgt SMALLINT   , pbd_fitl VARCHAR ( 1 )  , pbd_funl VARCHAR ( 1 )  , pbd_fchr SMALLINT   , pbd_fptc SMALLINT   , pbd_ffce VARCHAR ( 18 )  , pbh_fhgt SMALLINT   , pbh_fwgt SMALLINT   , pbh_fitl VARCHAR ( 1 )  , pbh_funl VARCHAR ( 1 )  , pbh_fchr SMALLINT   , pbh_fptc SMALLINT   , pbh_ffce VARCHAR ( 18 )  , pbl_fhgt SMALLINT   , pbl_fwgt SMALLINT   , pbl_fitl VARCHAR ( 1 )  , pbl_funl VARCHAR ( 1 )  , pbl_fchr SMALLINT   , pbl_fptc SMALLINT   , pbl_ffce VARCHAR ( 18 )  , pbt_cmnt VARCHAR ( 254 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 254 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pbcatvld: CREATE TABLE pbcatvld ( pbv_name VARCHAR ( 30 )  , pbv_vald VARCHAR ( 254 )  , pbv_type SMALLINT   , pbv_cntr INTEGER   , pbv_msg VARCHAR ( 254 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 254 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pcola: CREATE TABLE pcola ( atendido INTEGER   , conse INTEGER   , estado INTEGER   , fecha DATETIME   , hora_fin INTEGER   , hora_ini VARCHAR ( 5 )  , medico INTEGER   , motivo VARCHAR ( 100 )  , nhistoria INTEGER   , numorden INTEGER   , tipo VARCHAR ( 10 )  , turno VARCHAR ( 1 )  , fechac VARCHAR ( 10 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 10 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pconsult: CREATE TABLE pconsult ( nconsul INTEGER   , nhisto INTEGER   , enfactual VARCHAR ( 250 )  , evolu VARCHAR ( 250 )  , tratami VARCHAR ( 250 )  , exa_fi VARCHAR ( 250 )  , image VARCHAR ( 250 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 250 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pdiagno: CREATE TABLE pdiagno ( nhisto INTEGER   , nconsul INTEGER   , codedia VARCHAR ( 5 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 5 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pmoti_co: CREATE TABLE pmoti_co ( codmoti VARCHAR ( 4 )  , nhistori INTEGER   , nconsul INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..., nconsul INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE ppacient: CREATE TABLE ppacient ( cedula VARCHAR ( 8 )  , apellidos VARCHAR ( 25 )  , nombres VARCHAR ( 25 )  , sexo VARCHAR ( 1 )  , fnacimient DATETIME   , telefono VARCHAR ( 20 )  , codesegemp VARCHAR ( 3 )  , nhistoria INTEGER   , ultconsu INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...ultconsu INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pprocedi: CREATE TABLE pprocedi ( nhisto INTEGER   , nconsul INTEGER   , procedi1 VARCHAR ( 250 )  , procedi2 VARCHAR ( 250 )  , procedi3 VARCHAR ( 250 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 250 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE precipe: CREATE TABLE precipe ( nhisto INTEGER   , nconsul INTEGER   , codmedi VARCHAR ( 8 )  , indicacio VARCHAR ( 250 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 250 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE presupuesto: CREATE TABLE presupuesto ( cedula VARCHAR ( 8 )  , nombre VARCHAR ( 45 )  , direccion VARCHAR ( 60 )  , telefono VARCHAR ( 20 )  , nropresupuesto BIGINT ( 8 )  , fecha DATETIME   , cliente VARCHAR ( 50 )  , nota MEDIUMTEXT   , numhistoria INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '(' in ...BIGINT [(] 8 ) , fecha..."
+ 
+" CREATE TABLE presupuesto_operatorio: CREATE TABLE presupuesto_operatorio ( documento INTEGER   , historia INTEGER   , diagnostico VARCHAR ( 300 )  , intervencion VARCHAR ( 100 )  , ayudantes INTEGER   , dias_hospi INTEGER   , arco_c VARCHAR ( 1 )  , astroscopio VARCHAR ( 1 )  , sangre_qx_tipo_1 VARCHAR ( 40 )  , sangre_qx_tipo_2 VARCHAR ( 10 )  , sangre_qx_tipo_1_cantidad DOUBLE   , sangre_qx_tipo_2_cantidad DOUBLE   , material_sintesis DOUBLE   , instrumental_traumatologico DOUBLE   , honorarios DOUBLE   , observaciones MEDIUMTEXT   , fecha DATETIME   , estado VARCHAR ( 1 )  , clinica VARCHAR ( 10 )  , procedencia VARCHAR ( 10 )  , h_1_ayudante DOUBLE   , horas_quirofano INTEGER   , h_2_ayudante DOUBLE   , h_anestesiologo DOUBLE   , rx_postoperatoria VARCHAR ( 1 )  , rx_torax VARCHAR ( 1 )  , h_tratante DOUBLE   , fluoroscopio VARCHAR ( 1 )  , h_artroscopio DOUBLE   , eval_preoperatoria VARCHAR ( 1 )  , otros_estudios_de_imagenes VARCHAR ( 100 )  , interconsultas VARCHAR ( 100 )  , otro_1_tex VARCHAR ( 40 )  , otro_1_deta DOUBLE   , otro_2_tex VARCHAR ( 40 )  , otro_2_deta DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE presupuesto_planti: CREATE TABLE presupuesto_planti ( consecutivo INTEGER   , tipo_precio VARCHAR ( 1 )  , total_costo DOUBLE   , total_final DOUBLE   , notas MEDIUMTEXT   , tipo_doc VARCHAR ( 3 )  , nom_presupuesto VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE proveedor: CREATE TABLE proveedor ( cod_prov VARCHAR ( 6 )  , proveedor VARCHAR ( 150 )  , rif VARCHAR ( 20 )  , direccion VARCHAR ( 300 )  , telefono VARCHAR ( 20 )  , contacto VARCHAR ( 100 )  , celular VARCHAR ( 20 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 20 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE pvademe: CREATE TABLE pvademe ( codmedi VARCHAR ( 8 )  , nombrege VARCHAR ( 35 )  , nombreco VARCHAR ( 35 )  , dosifi VARCHAR ( 250 )  , uso VARCHAR ( 50 )  , presenta VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE radiologia_obs: CREATE TABLE radiologia_obs ( numhistoria INTEGER   , numconsulta INTEGER   , observacion MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE radiologia_paciente: CREATE TABLE radiologia_paciente ( nrohistoria INTEGER   , nroconsulta INTEGER   , coderadio VARCHAR ( 8 )  , nroopcion INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE radiologias: CREATE TABLE radiologias ( coderadio VARCHAR ( 8 )  , estudio VARCHAR ( 45 )  , codetipo VARCHAR ( 10 )  , opciones MEDIUMTEXT   , tipo VARCHAR ( 40 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE recipe_detalle: CREATE TABLE recipe_detalle ( nrohistoria INTEGER   , nroconsulta INTEGER   , recipe INTEGER   , fe_emision DATETIME   , fe_vence INTEGER   , nota MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE recipe_grupo: CREATE TABLE recipe_grupo ( codigo VARCHAR ( 4 )  , tratamiento VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 100 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE recipe_grupo_detalle: CREATE TABLE recipe_grupo_detalle ( codigo VARCHAR ( 4 )  , codemedicina VARCHAR ( 8 )  , descripcion VARCHAR ( 100 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , orden INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE recipe_obs: CREATE TABLE recipe_obs ( numhistoria INTEGER   , numconsulta INTEGER   , observacion MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE recipe2: CREATE TABLE recipe2 ( nrohistoria INTEGER   , nroconsulta INTEGER   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , descripcion VARCHAR ( 200 )  , orden INTEGER   , fecha DATETIME   , recipe INTEGER   , comple VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE recipes: CREATE TABLE recipes ( nrohistoria INTEGER   , nroconsulta INTEGER   , codemedicina VARCHAR ( 8 )  , indicaciones MEDIUMTEXT   , cantidad INTEGER   , orden INTEGER   , descripcion VARCHAR ( 200 )  , fecha DATETIME   , recipe INTEGER   , comple VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE referencia: CREATE TABLE referencia ( nrohistoria INTEGER   , nroconsulta INTEGER   , ceduladoctor BIGINT ( 15 )  , referencia MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '(' in ...BIGINT [(] 15 ) , referencia..."
+ 
+" CREATE TABLE reg_empl_frec_nomina: CREATE TABLE reg_empl_frec_nomina ( frecuencia_nomina VARCHAR ( 2 )  , nombre_frecuencia VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE reg_empl_tipo_nomina: CREATE TABLE reg_empl_tipo_nomina ( tipo_nomina VARCHAR ( 2 )  , nombre_nomina VARCHAR ( 50 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 50 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE registro_empleados: CREATE TABLE registro_empleados ( nro_empleado DOUBLE   , fecha_creacion DATETIME   , status VARCHAR ( 1 )  , cedula_empleado VARCHAR ( 20 )  , nombre_empleado VARCHAR ( 100 )  , tipo_nomina VARCHAR ( 2 )  , frecuencia_nomina VARCHAR ( 2 )  , monto_s1 DOUBLE   , monto_s2 DOUBLE   , monto_s3 DOUBLE   , monto_s4 DOUBLE   , monto_total DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._total DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE registro_empleados_eje: CREATE TABLE registro_empleados_eje ( nro_nomina DOUBLE   , descripcion VARCHAR ( 100 )  , fecha_aplicacion DATETIME   , status VARCHAR ( 1 )  , tipo_nomina VARCHAR ( 2 )  , frecuencia_nomina VARCHAR ( 2 )  , monto_total DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._total DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE registro_empleados_eje_detalle: CREATE TABLE registro_empleados_eje_detalle ( nro_nomina DOUBLE   , nro_empleado DOUBLE   , nro_cxp DOUBLE   , monto_empleado DOUBLE   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._empleado DOUBLE , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE reposo_paciente: CREATE TABLE reposo_paciente ( nrohistoria INTEGER   , nroconsulta INTEGER   , codereposo VARCHAR ( 1 )  , fdesde DATETIME   , numdias INTEGER   , obser_reposo MEDIUMTEXT   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE representante: CREATE TABLE representante ( numhistoria INTEGER   , nombre VARCHAR ( 40 )  , codeparentesco VARCHAR ( 1 )  , direccion VARCHAR ( 60 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 60 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE seg_emp: CREATE TABLE seg_emp ( codesegemp VARCHAR ( 3 )  , nombre VARCHAR ( 60 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 60 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE sms_compra: CREATE TABLE sms_compra ( conse_compra INTEGER   , fecha_compra DATETIME   , monto_compra DOUBLE   , cantidad_compra INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ..._compra INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE sms_enviados: CREATE TABLE sms_enviados ( conta DOUBLE   , usuario VARCHAR ( 10 )  , medico VARCHAR ( 60 )  , proveedor VARCHAR ( 1 )  , numero VARCHAR ( 11 )  , mensaje VARCHAR ( 150 )  , fecha DATETIME   , tipo VARCHAR ( 1 )  , historia INTEGER   , consulta INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...consulta INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE sms_envio_pac: CREATE TABLE sms_envio_pac ( nrohistoria INTEGER   , nroconsulta INTEGER   , numero_cel VARCHAR ( 14 )  , texto_sms VARCHAR ( 160 )  , orden INTEGER   , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...) , orden INTEGER , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE tipo_antecedente: CREATE TABLE tipo_antecedente ( codetipo VARCHAR ( 2 )  , descripcion VARCHAR ( 40 )  , tipoantecedente VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 1 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE tipos_conceptos: CREATE TABLE tipos_conceptos ( id_tipo_concepto VARCHAR ( 4 )  , des_concepto VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 100 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE tipos_documentos: CREATE TABLE tipos_documentos ( tip_documento VARCHAR ( 2 )  , des_documento VARCHAR ( 100 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 100 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE tipos_examenes: CREATE TABLE tipos_examenes ( codetipo VARCHAR ( 10 )  , tipo VARCHAR ( 40 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: near '`' in ...VARCHAR ( 40 ) , [`]id` INT(11) NOT..."
+ 
+" CREATE TABLE vademecum: CREATE TABLE vademecum ( codemedicina VARCHAR ( 8 )  , nombregenerico VARCHAR ( 35 )  , nombrecomercial VARCHAR ( 35 )  , dosificacion MEDIUMTEXT   , uso MEDIUMTEXT   , presentacion VARCHAR ( 50 )  , concentracion DOUBLE   , cada DOUBLE   , durante INTEGER   , pvc DOUBLE   , pvs DOUBLE   , dosis DOUBLE   , sico VARCHAR ( 1 )  , nombrecomercial1 VARCHAR ( 40 )  , nombrecomercial2 VARCHAR ( 40 )  , nombrecomercial3 VARCHAR ( 40 )  , totalre MEDIUMTEXT   , sicome VARCHAR ( 1 )  , sicome1 VARCHAR ( 1 )  , sicome2 VARCHAR ( 1 )  , sicome3 VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 
+" CREATE TABLE vademecum_m: CREATE TABLE vademecum_m ( codemedicina VARCHAR ( 200 )  , nombregenerico VARCHAR ( 35 )  , nombrecomercial VARCHAR ( 35 )  , dosificacion MEDIUMTEXT   , uso MEDIUMTEXT   , presentacion VARCHAR ( 35 )  , concentracion DOUBLE   , cada DOUBLE   , durante INTEGER   , pvc DOUBLE   , pvs DOUBLE   , dosis DOUBLE   , sico VARCHAR ( 1 )  , nombrecomercial1 VARCHAR ( 40 )  , nombrecomercial2 VARCHAR ( 40 )  , nombrecomercial3 VARCHAR ( 40 )  , totalre MEDIUMTEXT   , sicome VARCHAR ( 1 )  , sicome1 VARCHAR ( 1 )  , sicome2 VARCHAR ( 1 )  , sicome3 VARCHAR ( 1 )  , `id` INT(11) NOT NULL AUTO_INCREMENT , PRIMARY KEY (id) USING BTREE , created_at TIMESTAMP NULL DEFAULT NULL    , updated_at TIMESTAMP NULL DEFAULT NULL    )  : SQLSTATE = 37000
+[Sybase][ODBC Driver][Adaptive Server Anywhere]Syntax error or access violation: Syntax error near 'MEDIUMTEXT' on line 1"
+ 

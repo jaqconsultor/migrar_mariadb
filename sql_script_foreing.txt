@@ -1,0 +1,260 @@
+Schema::table('antece_paciente', function (Blueprint $table) {
+$table->foreign('codeantecedente','a')->references('codantecedente')->on('antecedentes');
+});
+
+Schema::table('antece_paciente', function (Blueprint $table) {
+$table->foreign('numhistoria','d')->references('numhistoria')->on('pacientes');
+});
+
+Schema::table('cola', function (Blueprint $table) {
+$table->foreign('numhistoria','')->references('numhistoria')->on('pacientes');
+});
+
+Schema::table('constancia_obs', function (Blueprint $table) {
+$table->foreign('numconsulta','QW')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('constancia_obs', function (Blueprint $table) {
+$table->foreign('numhistoria','QW')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('consultas', function (Blueprint $table) {
+$table->foreign('numhistoria','iueu')->references('numhistoria')->on('pacientes');
+});
+
+Schema::table('diagnostico_paciente', function (Blueprint $table) {
+$table->foreign('codediagnostico','SA')->references('codediagnostico')->on('diagnosticos');
+});
+
+Schema::table('diagnostico_paciente', function (Blueprint $table) {
+$table->foreign('nroconsulta','DS')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('diagnostico_paciente', function (Blueprint $table) {
+$table->foreign('nrohistoria','DS')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('eco_doppler', function (Blueprint $table) {
+$table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('eco_doppler', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('eco_obstetrico', function (Blueprint $table) {
+$table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('eco_obstetrico', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('eco_obstetrico_tercer', function (Blueprint $table) {
+$table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('eco_obstetrico_tercer', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('eco_pelvico', function (Blueprint $table) {
+$table->foreign('nroconsulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('eco_pelvico', function (Blueprint $table) {
+$table->foreign('numhistoria','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('ecocadiograma_fetal', function (Blueprint $table) {
+$table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('ecocadiograma_fetal', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('examen_fisico', function (Blueprint $table) {
+$table->foreign('nroconsulta','SD')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('examen_fisico', function (Blueprint $table) {
+$table->foreign('nrohistoria','SD')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('examen_fisico_nuevo', function (Blueprint $table) {
+$table->foreign('consulta','AS')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('examen_fisico_nuevo', function (Blueprint $table) {
+$table->foreign('historia','AS')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('examen_obs', function (Blueprint $table) {
+$table->foreign('numconsulta','SAS')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('examen_obs', function (Blueprint $table) {
+$table->foreign('numhistoria','SAS')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('examen_paciente', function (Blueprint $table) {
+$table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('examen_paciente', function (Blueprint $table) {
+$table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('examenes', function (Blueprint $table) {
+$table->foreign('codetipo','WQW')->references('codetipo')->on('tipos_examenes');
+});
+
+Schema::table('hospitalizacion', function (Blueprint $table) {
+$table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('hospitalizacion', function (Blueprint $table) {
+$table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('imagen_consulta', function (Blueprint $table) {
+$table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('imagen_consulta', function (Blueprint $table) {
+$table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('imagen_pacientes', function (Blueprint $table) {
+$table->foreign('nrohistoria','SA')->references('numhistoria')->on('pacientes');
+});
+
+Schema::table('informe', function (Blueprint $table) {
+$table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('informe', function (Blueprint $table) {
+$table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('motivo_consulta_paciente', function (Blueprint $table) {
+$table->foreign('codemotivo','ASA')->references('codemotivo')->on('motivos_consulta');
+});
+
+Schema::table('motivo_consulta_paciente', function (Blueprint $table) {
+$table->foreign('nroconsulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('motivo_consulta_paciente', function (Blueprint $table) {
+$table->foreign('nrohistoria','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('pago_quiru', function (Blueprint $table) {
+$table->foreign('consecuti','')->references('consecuti')->on('baremo_quiru');
+});
+
+Schema::table('pre_natal_desarrollo_fino', function (Blueprint $table) {
+$table->foreign('gesta_clave','')->references('gesta_clave')->on('pre_natal_observaciones');
+});
+
+Schema::table('pre_natal_desarrollo_fino', function (Blueprint $table) {
+$table->foreign('historia','')->references('historia')->on('pre_natal_observaciones');
+});
+
+Schema::table('pre_natal_observaciones', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('pacientes');
+});
+
+Schema::table('prena_exames_b', function (Blueprint $table) {
+$table->foreign('gesta_clave','')->references('gesta_clave')->on('pre_natal_observaciones');
+});
+
+Schema::table('prena_exames_b', function (Blueprint $table) {
+$table->foreign('historia','')->references('historia')->on('pre_natal_observaciones');
+});
+
+Schema::table('radiologia_obs', function (Blueprint $table) {
+$table->foreign('numconsulta','DSS')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('radiologia_obs', function (Blueprint $table) {
+$table->foreign('numhistoria','DSS')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('radiologia_paciente', function (Blueprint $table) {
+$table->foreign('nroconsulta','o')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('radiologia_paciente', function (Blueprint $table) {
+$table->foreign('nrohistoria','o')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('recipes', function (Blueprint $table) {
+$table->foreign('nroconsulta','uii')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('recipes', function (Blueprint $table) {
+$table->foreign('nroconsulta','SAS')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('recipes', function (Blueprint $table) {
+$table->foreign('nrohistoria','uii')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('recipes', function (Blueprint $table) {
+$table->foreign('nrohistoria','SAS')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('referencia', function (Blueprint $table) {
+$table->foreign('nroconsulta','iui')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('referencia', function (Blueprint $table) {
+$table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('referencia', function (Blueprint $table) {
+$table->foreign('nrohistoria','iui')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('referencia', function (Blueprint $table) {
+$table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('reposo_paciente', function (Blueprint $table) {
+$table->foreign('nroconsulta','yui')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('reposo_paciente', function (Blueprint $table) {
+$table->foreign('nroconsulta','ASA')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('reposo_paciente', function (Blueprint $table) {
+$table->foreign('nrohistoria','yui')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('reposo_paciente', function (Blueprint $table) {
+$table->foreign('nrohistoria','ASA')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('representante', function (Blueprint $table) {
+$table->foreign('numhistoria','AS')->references('numhistoria')->on('pacientes');
+});
+
+Schema::table('ultra_abdominal', function (Blueprint $table) {
+$table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('ultra_abdominal', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('consultas');
+});
+
+Schema::table('ultra_mama', function (Blueprint $table) {
+$table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+});
+
+Schema::table('ultra_mama', function (Blueprint $table) {
+$table->foreign('historia','')->references('numhistoria')->on('consultas');
+});
+

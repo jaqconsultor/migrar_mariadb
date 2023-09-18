@@ -1,84 +1,40 @@
-@extends('template/template')
-
-@section('site-page')
-    <div class="container">
-    <br/>
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $e)
-                    <li>{{$e}}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    @if(session('mensaje'))
-        <div class="alert alert-success">{{session('mensaje')}}</div>
-        @elseif(session('error'))
-        <div class="alert alert-danger">{{session('error')}}</div>
-    @endif
-    
-        
+@extends('layouts.app')
+@section('content')
+@foreach ($registros as $registro) 
+<div class="row justify-content-center">
+<div class="col-md-11">
+<div class="card">
+<h5 class="card-header">
+@lang('dicc.EditarRole')
+</h5>
+<div class="card-body">
+<p class="card-text">
+<form method="POST" action="{{ route('$$action@store$$',$registro->id) }}">
+@csrf
+@method('PUT')
+$$CAMPOS$$
+<div class="row mb-0">
+<div class="col-md-8 offset-md-4">
+<button type="submit" class="btn btn-primary">
+@lang('dicc.UpdateRegister')
+</button>
+<a href="{{ route('roles.index') }}" class="btn btn-default" >
+<img src="/bootstrap-icons/icons/list.svg" />
+<span class="d-none d-xl-inline-block">
+@lang('dicc.VerLista')
+</span> 
+</a>
 </div>
-
-<div class="container-fluid">
-    <div  class="row">
-        <div class="col-xs-12 ">
-            <div class="box">
-             <div class="box-header">
-                <div class="box-name">
-                    <i class=""></i>
-                    <span>Modificar</span>
-                </div>
-                <div class="box-icons">
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-                    <a class="expand-link">
-                        <i class="fa fa-expand"></i>
-                    </a>
-                    
-                </div>
-                <div class="no-move"></div>
-            </div>
-          <div class="box-content">
-              @if($errors->any())
-                  <div class="alert alert-danger">
-                    <ul>
-                       @foreach($errors->all() as $e)
-                       <li>{{$e}}</li>
-                     @endforeach
-                   </ul>
-        </div>
-              @endif
-              @if(session('mensaje'))
-              <div class="alert alert-success">{{session('mensaje')}}</div>
-              @endif
-
-              $$action@store$$
-
-               {{csrf_field()}}
-               <div class="form-group">
-                   $$CAMPOS$$
-               <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-               <a href="{{url('
-               $$action@index$$
-               ')}}">
-               <button type="button" class="btn btn-primary">Volver</button>
-               </a>
-              </div>
-           </form>
-                    
-         </div>
-            
-        </div>
-        </div>
-    </div>
 </div>
-
-            
+</form>
+</p>
+</div>
+<div class="card-footer">
+</div>
+</div>
+</div>
+</div>
+@endforeach
 @endsection
-@section('javascript-code')
 
 
-@endsection

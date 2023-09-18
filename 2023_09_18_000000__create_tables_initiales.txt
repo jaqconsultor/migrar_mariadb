@@ -1,0 +1,2859 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTablesInitiales extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+
+                   Schema::create('antece_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->string('codeantecedente',4);
+
+                   $table->string('descripcion',50);
+                   $table->string('tipo',2);
+                   $table->string('tipo2',1);
+                   });
+                    
+                   Schema::create('antecedentes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codantecedente',4);
+                   $table->string('descripcion',40);
+                   $table->string('codtipo',2);
+                   });
+                    
+                   Schema::create('bancos', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('cod_banco',6);
+                   $table->string('nombre_banco',150);
+                   });
+                    
+                   Schema::create('baremo_quiru', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('consecuti');
+                   $table->string('cod_inter',3);
+                   $table->string('cod_clini',3);
+                   $table->string('ced_paciente',8);
+                   $table->string('nom_interven',300);
+                   $table->string('nom_paciente',200);
+                   $table->datetime('fecha_creado')->nullable();
+                   $table->datetime('fecha_opera')->nullable();
+
+                   $table->double('monto_opera');
+                   $table->string('tipo_rol',1);
+                   $table->string('pagada',1);
+                   $table->integer('medico_prin');
+                   $table->integer('medico_aux');
+                   $table->integer('historia');
+                   $table->string('diagnostico',100);
+                   $table->double('monto_abono');
+                   $table->double('monto_resta');
+                   $table->string('empre',30);
+
+                   $table->integer('duracion');
+                   });
+                    
+                   Schema::create('clinicas', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('cod_clin',3);
+                   $table->string('nom_clin',50);
+                   });
+                    
+                   Schema::create('cola', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('numhistoria');
+                   $table->integer('numorden');
+
+
+                   $table->string('turno',1);
+                   $table->string('motivo',100);
+                   $table->double('monto');
+
+
+                   $table->integer('tiempo');
+                   $table->string('tipo',10);
+                   $table->integer('conse');
+                   $table->integer('medico');
+                   $table->string('sms',1);
+                   $table->string('sms_text',160);
+                   });
+                    
+                   Schema::create('cola_dia_no_labor', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->datetime('dia')->nullable();
+                   $table->string('tipo',10);
+                   $table->string('motivo',100);
+                   $table->integer('medico');
+                   });
+                    
+                   Schema::create('constancia_obs', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->integer('numconsulta');
+
+                   $table->string('titulo',50);
+
+                   });
+                    
+                   Schema::create('consultas', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->integer('nroconsulta');
+                   $table->datetime('fecha')->nullable();
+
+                   $table->double('peso');
+                   $table->double('talla');
+                   $table->double('fc');
+                   $table->double('pp');
+                   $table->double('circcefalica');
+                   $table->double('circtoraxica');
+                   $table->double('circabdominal');
+                   $table->string('tasentado',7);
+                   $table->string('taacostado',7);
+                   $table->string('tapie',7);
+
+                   $table->string('eliminado',1);
+
+
+
+
+
+
+
+
+                   $table->integer('medico');
+                   $table->string('sms',1);
+                   });
+                    
+                   Schema::create('consultas_n', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->integer('nroconsulta');
+                   $table->datetime('fecha')->nullable();
+
+                   $table->double('peso');
+                   $table->double('talla');
+                   $table->double('fc');
+                   $table->double('pp');
+                   $table->double('circcefalica');
+                   $table->double('circtoraxica');
+                   $table->double('circabdominal');
+                   $table->string('tasentado',7);
+                   $table->string('taacostado',7);
+                   $table->string('tapie',7);
+
+                   $table->string('eliminado',1);
+
+
+
+
+
+
+
+
+                   $table->integer('medico');
+                   $table->double('tem_otica');
+                   $table->double('tem_oral');
+                   $table->double('tem_axilar');
+                   });
+                    
+                   Schema::create('consultorios', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',10);
+                   $table->string('consultorio',100);
+                   });
+                    
+                   Schema::create('cuentas_x_pagar', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_cxp');
+                   $table->string('origen_cxp',2);
+                   $table->datetime('fec_cxp')->nullable();
+                   $table->string('edo_cxp',1);
+                   $table->string('tipo_cxp',1);
+                   $table->string('conc_cxp',4);
+                   $table->string('cxp_codigo',20);
+                   $table->string('cxp_descripcion',150);
+                   $table->datetime('fec_docum')->nullable();
+                   $table->string('cxp_nro_control',25);
+                   $table->string('cxp_nro_factura',25);
+                   $table->string('cxp_referencia',25);
+                   $table->double('cxp_mto_neto');
+                   $table->double('cxp_ret_isrl');
+                   $table->double('cxp_m_ret_isrl');
+                   $table->double('cxp_iva');
+                   $table->double('cxp_mto_iva');
+                   $table->double('cxp_mto_total');
+                   $table->double('cxp_ret_iva');
+                   $table->double('cxp_m_ret_iva');
+                   $table->double('cxp_mto_total_pagar');
+                   $table->double('cxp_saldo_a_pagar');
+                   $table->string('cxp_chekear',1);
+                   $table->string('cxp_forma',1);
+                   });
+                    
+                   Schema::create('cuentas_x_pagar_mov', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_registro');
+                   $table->double('nro_cxp');
+                   $table->double('nro_mov');
+                   $table->datetime('fecha_emision')->nullable();
+                   $table->string('nro_documento',100);
+                   $table->string('tip_documento',2);
+                   $table->double('monto_pagar');
+                   });
+                    
+                   Schema::create('dd_arterial_mi', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->integer('num_consulta');
+                   $table->string('indicacion',100);
+
+                   $table->string('hc_text',50);
+                   $table->double('iliaca_ext_der');
+                   $table->double('iliaca_ext_izq');
+                   $table->double('feromonal_comun_der');
+                   $table->double('feromonal_comun_izq');
+                   $table->double('fer_superf_prox_der');
+                   $table->double('fer_superf_prox_izq');
+                   $table->double('fer_superf_distal_der');
+                   $table->double('fer_superf_distal_izq');
+                   $table->double('poplitea_der');
+                   $table->double('poplitea_izq');
+                   $table->double('tibial_ante_der');
+                   $table->double('tibial_ante_izq');
+                   $table->double('tibial_post_der');
+                   $table->double('tibial_post_izq');
+                   $table->double('peronea_der');
+                   $table->double('peronea_izq');
+
+                   $table->string('equipo',30);
+                   $table->string('tansductor',30);
+                   $table->string('iliaca_ext',5);
+                   $table->string('feromonal_comun',5);
+                   $table->string('fer_superf_prox',5);
+                   $table->string('fer_superf_distal',5);
+                   $table->string('poplitea',5);
+                   $table->string('tibial_ante',5);
+                   $table->string('tibial_post',5);
+                   $table->string('peronea',3);
+
+
+                   $table->string('segunda_armonica',1);
+                   $table->string('contraste',1);
+                   $table->string('llenado',1);
+
+
+
+                   });
+                    
+                   Schema::create('department', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('dept_id');
+                   $table->string('dept_name',40);
+                   $table->integer('dept_head_id');
+                   });
+                    
+                   Schema::create('detalles_factura_cliente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('cod_inventario',2);
+                   $table->integer('numfactura');
+                   $table->string('tipo_articulo',25);
+                   $table->string('nombre',50);
+                   $table->double('precio');
+                   $table->double('descuento');
+                   $table->integer('cantidad');
+                   $table->datetime('fecha_doc')->nullable();
+                   $table->string('tipo_precio',3);
+                   $table->double('total_articulo');
+                   });
+                    
+                   Schema::create('detalles_factura_cliente_copy', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('cod_inventario',2);
+                   $table->integer('numfactura');
+                   $table->string('tipo_articulo',25);
+                   $table->string('nombre',50);
+                   $table->double('precio');
+                   $table->double('descuento');
+                   $table->integer('cantidad');
+                   $table->datetime('fecha_doc')->nullable();
+                   $table->string('tipo_precio',3);
+                   $table->double('total_articulo');
+                   $table->integer('medico');
+                   $table->string('estatus',1);
+                   });
+                    
+                   Schema::create('detalles_presupuesto_plantilla', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('cod_inventario',2);
+                   $table->integer('consecutivo');
+                   $table->string('tipo_articulo',25);
+                   $table->string('nombre',50);
+                   $table->double('precio');
+                   $table->double('descuento');
+                   $table->integer('cantidad');
+                   $table->datetime('fecha_doc')->nullable();
+                   $table->string('tipo_documento',3);
+                   $table->double('total_articulo');
+                   });
+                    
+                   Schema::create('diagnostico_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codediagnostico',5);
+                   $table->string('detalle_diagnostco',100);
+                   $table->integer('orden');
+                   });
+                    
+                   Schema::create('diagnosticos', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codediagnostico',5);
+                   $table->string('descripcion',50);
+                   });
+                    
+                   Schema::create('dias_semana', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->datetime('fecha')->nullable();
+                   $table->string('dia_semana',10);
+                   $table->integer('semana');
+                   $table->integer('ano');
+                   $table->string('descripcion',100);
+                   $table->string('tipo_dia',10);
+                   });
+                    
+                   Schema::create('dieta_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('histroria');
+                   $table->integer('consulta');
+                   $table->string('cod_dieta',2);
+
+                   $table->string('ejecutada',1);
+                   $table->integer('calorias');
+                   $table->string('dieta',200);
+                   });
+                    
+                   Schema::create('doctores', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+
+                   $table->string('apellidos',30);
+                   $table->string('nombres',30);
+                   $table->string('clinica',60);
+
+                   $table->string('telefono',108);
+                   $table->string('ciudad',30);
+
+                   $table->string('codeespecial',3);
+                   });
+                    
+                   Schema::create('eco_doppler', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->string('arteria_uraina_menor',20);
+                   $table->string('arteria_uraina_mayor',20);
+                   $table->string('arteria_umbilical_menor',20);
+                   $table->string('arteria_umbilical_mayor',20);
+                   $table->string('arteria_cerebral_menor',20);
+                   $table->string('arteria_cerebral_mayor',20);
+                   $table->string('ductos_venosos',1);
+                   $table->string('ven_umbilical',1);
+                   $table->string('relac_aorta',1);
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('arteria_uraina_menor_izq',20);
+                   $table->string('arteria_uraina_mayor_izq',20);
+
+                   $table->integer('gesta');
+                   $table->datetime('fur')->nullable();
+                   $table->string('relacion_ud',20);
+                   $table->string('relacion_ui',20);
+                   $table->string('relacion_u',20);
+                   $table->string('relacion_cm',20);
+                   $table->string('pico_ud',20);
+                   $table->string('pico_ui',20);
+                   $table->string('pico_u',20);
+                   $table->string('pico_cm',20);
+                   $table->string('para',10);
+
+                   });
+                    
+                   Schema::create('eco_obstetrico', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('gesta');
+                   $table->datetime('fur')->nullable();
+                   $table->string('eg',40);
+                   $table->integer('saco_gestacional');
+                   $table->string('circular_ovuide',1);
+                   $table->string('alargado',1);
+                   $table->string('retraido',1);
+                   $table->string('anormal',1);
+                   $table->string('movimiento_embrionario',1);
+                   $table->string('actividad_cardiaca',1);
+                   $table->integer('lcc');
+                   $table->integer('dbp');
+                   $table->string('huevo_anembrionado',1);
+                   $table->string('mola',1);
+                   $table->string('restos_abortivos',1);
+                   $table->string('embarazo_ectopico',1);
+
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('tn');
+                   $table->string('posicionutreo',1);
+
+
+
+
+
+
+
+
+
+                   $table->string('cuerpo_utero',1);
+
+
+
+
+
+                   $table->string('dc_venoso',1);
+                   $table->string('para',10);
+
+                   $table->string('posicionavf_d',1);
+                   $table->string('posicionrvf_d',1);
+                   });
+                    
+                   Schema::create('eco_obstetrico_tercer', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('gesta');
+                   $table->datetime('fur')->nullable();
+                   $table->string('eg',40);
+                   $table->string('gestacion',1);
+                   $table->string('situacion',1);
+                   $table->string('dorso',1);
+                   $table->string('presentacion',1);
+                   $table->integer('bio_ca_bp');
+                   $table->integer('bio_ca_cc');
+                   $table->integer('bio_ca_of');
+                   $table->integer('bio_in_ic');
+                   $table->integer('bio_or_ioe');
+                   $table->integer('bio_or_io');
+                   $table->integer('bio_car_apc');
+                   $table->integer('bio_car_apt');
+                   $table->integer('bio_aorta');
+                   $table->integer('bio_abdomen');
+                   $table->integer('bio_ta');
+                   $table->integer('bio_ca');
+                   $table->integer('bio_humero');
+                   $table->integer('bio_cubito');
+                   $table->integer('bio_femur');
+                   $table->integer('bio_tibia');
+                   $table->integer('bio_sacro');
+                   $table->integer('bio_peso_fetal');
+                   $table->integer('bio_talla');
+                   $table->string('bio_sexo',1);
+                   $table->string('ana_polo_cefalico',1);
+                   $table->string('ana_ventriculos_cerebrales',1);
+                   $table->string('ana_cerebelo',1);
+                   $table->string('ana_rostro_fetal',1);
+                   $table->string('ana_actitud_fetal',1);
+                   $table->string('ana_columna_vertebral',1);
+                   $table->string('ana_torax',1);
+                   $table->string('ana_relacion',1);
+                   $table->string('ana_corazon',1);
+                   $table->string('ana_corte_tracameral',1);
+                   $table->string('ana_tracto_de_salida',1);
+                   $table->string('ana_estomago',1);
+                   $table->string('ana_intestino',1);
+                   $table->string('ana_paredes_abdominales',1);
+                   $table->string('ana_rinone',1);
+                   $table->string('ana_vejiga',1);
+                   $table->string('ana_ex_brazo_an_md',1);
+                   $table->string('ana_ex_brazo_an_mi',1);
+                   $table->string('ana_ex_muslo_ppd',1);
+                   $table->string('ana_ex_muslo_ppi',1);
+                   $table->string('fun_liquido_amniotico',1);
+                   $table->integer('fun_indice_la');
+                   $table->string('fun_dp_ubicacion',1);
+                   $table->string('fun_dp_grado',10);
+                   $table->integer('fun_dp_grosor');
+                   $table->string('fun_dp_cordon_umbilical',1);
+                   $table->string('fun_dp_movimientos_respiratorios',1);
+                   $table->string('fun_dp_tono_fetal',1);
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('movimientos_feto',1);
+                   $table->string('reactividad_cardiaca',1);
+                   $table->string('liquido_amniotico',1);
+
+                   $table->integer('gemelo');
+                   });
+                    
+                   Schema::create('eco_obstetrico_tercer_2', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('gesta');
+                   $table->datetime('fur')->nullable();
+                   $table->string('eg',40);
+                   $table->string('gestacion',1);
+                   $table->string('situacion',1);
+                   $table->string('dorso',1);
+                   $table->string('presentacion',1);
+                   $table->integer('bio_ca_bp');
+                   $table->integer('bio_ca_cc');
+                   $table->integer('bio_ca_of');
+                   $table->integer('bio_in_ic');
+                   $table->integer('bio_or_ioe');
+                   $table->integer('bio_or_io');
+                   $table->integer('bio_car_apc');
+                   $table->integer('bio_car_apt');
+                   $table->integer('bio_aorta');
+                   $table->integer('bio_abdomen');
+                   $table->integer('bio_ta');
+                   $table->integer('bio_ca');
+                   $table->integer('bio_humero');
+                   $table->integer('bio_cubito');
+                   $table->integer('bio_femur');
+                   $table->integer('bio_tibia');
+                   $table->integer('bio_sacro');
+                   $table->integer('bio_peso_fetal');
+                   $table->integer('bio_talla');
+                   $table->string('bio_sexo',1);
+                   $table->string('ana_polo_cefalico',1);
+                   $table->string('ana_ventriculos_cerebrales',1);
+                   $table->string('ana_cerebelo',1);
+                   $table->string('ana_rostro_fetal',1);
+                   $table->string('ana_actitud_fetal',1);
+                   $table->string('ana_columna_vertebral',1);
+                   $table->string('ana_torax',1);
+                   $table->string('ana_relacion',1);
+                   $table->string('ana_corazon',1);
+                   $table->string('ana_corte_tracameral',1);
+                   $table->string('ana_tracto_de_salida',1);
+                   $table->string('ana_estomago',1);
+                   $table->string('ana_intestino',1);
+                   $table->string('ana_paredes_abdominales',1);
+                   $table->string('ana_rinone',1);
+                   $table->string('ana_vejiga',1);
+                   $table->string('ana_ex_brazo_an_md',1);
+                   $table->string('ana_ex_brazo_an_mi',1);
+                   $table->string('ana_ex_muslo_ppd',1);
+                   $table->string('ana_ex_muslo_ppi',1);
+                   $table->string('fun_liquido_amniotico',1);
+                   $table->integer('fun_indice_la');
+                   $table->string('fun_dp_ubicacion',1);
+                   $table->string('fun_dp_grado',10);
+                   $table->integer('fun_dp_grosor');
+                   $table->string('fun_dp_cordon_umbilical',1);
+                   $table->string('fun_dp_movimientos_respiratorios',1);
+                   $table->string('fun_dp_tono_fetal',1);
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('movimientos_feto',1);
+                   $table->string('reactividad_cardiaca',1);
+                   $table->string('liquido_amniotico',1);
+
+                   $table->integer('gemelo');
+                   });
+                    
+                   Schema::create('eco_obstetrico_tercer_2_o', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('gesta');
+                   $table->datetime('fur')->nullable();
+                   $table->string('eg',40);
+                   $table->string('gestacion',1);
+                   $table->string('situacion',1);
+                   $table->string('dorso',1);
+                   $table->string('presentacion',1);
+                   $table->integer('bio_ca_bp');
+                   $table->integer('bio_ca_cc');
+                   $table->integer('bio_ca_of');
+                   $table->integer('bio_in_ic');
+                   $table->integer('bio_or_ioe');
+                   $table->integer('bio_or_io');
+                   $table->integer('bio_car_apc');
+                   $table->integer('bio_car_apt');
+                   $table->integer('bio_aorta');
+                   $table->integer('bio_abdomen');
+                   $table->integer('bio_ta');
+                   $table->integer('bio_ca');
+                   $table->integer('bio_humero');
+                   $table->integer('bio_cubito');
+                   $table->integer('bio_femur');
+                   $table->integer('bio_tibia');
+                   $table->integer('bio_sacro');
+                   $table->integer('bio_peso_fetal');
+                   $table->integer('bio_talla');
+                   $table->string('bio_sexo',1);
+                   $table->string('ana_polo_cefalico',1);
+                   $table->string('ana_ventriculos_cerebrales',1);
+                   $table->string('ana_cerebelo',1);
+                   $table->string('ana_rostro_fetal',1);
+                   $table->string('ana_actitud_fetal',1);
+                   $table->string('ana_columna_vertebral',1);
+                   $table->string('ana_torax',1);
+                   $table->string('ana_relacion',1);
+                   $table->string('ana_corazon',1);
+                   $table->string('ana_corte_tracameral',1);
+                   $table->string('ana_tracto_de_salida',1);
+                   $table->string('ana_estomago',1);
+                   $table->string('ana_intestino',1);
+                   $table->string('ana_paredes_abdominales',1);
+                   $table->string('ana_rinone',1);
+                   $table->string('ana_vejiga',1);
+                   $table->string('ana_ex_brazo_an_md',1);
+                   $table->string('ana_ex_brazo_an_mi',1);
+                   $table->string('ana_ex_muslo_ppd',1);
+                   $table->string('ana_ex_muslo_ppi',1);
+                   $table->string('fun_liquido_amniotico',1);
+                   $table->integer('fun_indice_la');
+                   $table->string('fun_dp_ubicacion',1);
+                   $table->string('fun_dp_grado',10);
+                   $table->integer('fun_dp_grosor');
+                   $table->string('fun_dp_cordon_umbilical',1);
+                   $table->string('fun_dp_movimientos_respiratorios',1);
+                   $table->string('fun_dp_tono_fetal',1);
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('movimientos_feto',1);
+                   $table->string('reactividad_cardiaca',1);
+                   $table->string('liquido_amniotico',1);
+                   });
+                    
+                   Schema::create('eco_obstetrico_tercer_o', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('gesta');
+                   $table->datetime('fur')->nullable();
+                   $table->string('eg',40);
+                   $table->string('gestacion',1);
+                   $table->string('situacion',1);
+                   $table->string('dorso',1);
+                   $table->string('presentacion',1);
+                   $table->integer('bio_ca_bp');
+                   $table->integer('bio_ca_cc');
+                   $table->integer('bio_ca_of');
+                   $table->integer('bio_in_ic');
+                   $table->integer('bio_or_ioe');
+                   $table->integer('bio_or_io');
+                   $table->integer('bio_car_apc');
+                   $table->integer('bio_car_apt');
+                   $table->integer('bio_aorta');
+                   $table->integer('bio_abdomen');
+                   $table->integer('bio_ta');
+                   $table->integer('bio_ca');
+                   $table->integer('bio_humero');
+                   $table->integer('bio_cubito');
+                   $table->integer('bio_femur');
+                   $table->integer('bio_tibia');
+                   $table->integer('bio_sacro');
+                   $table->integer('bio_peso_fetal');
+                   $table->integer('bio_talla');
+                   $table->string('bio_sexo',1);
+                   $table->string('ana_polo_cefalico',1);
+                   $table->string('ana_ventriculos_cerebrales',1);
+                   $table->string('ana_cerebelo',1);
+                   $table->string('ana_rostro_fetal',1);
+                   $table->string('ana_actitud_fetal',1);
+                   $table->string('ana_columna_vertebral',1);
+                   $table->string('ana_torax',1);
+                   $table->string('ana_relacion',1);
+                   $table->string('ana_corazon',1);
+                   $table->string('ana_corte_tracameral',1);
+                   $table->string('ana_tracto_de_salida',1);
+                   $table->string('ana_estomago',1);
+                   $table->string('ana_intestino',1);
+                   $table->string('ana_paredes_abdominales',1);
+                   $table->string('ana_rinone',1);
+                   $table->string('ana_vejiga',1);
+                   $table->string('ana_ex_brazo_an_md',1);
+                   $table->string('ana_ex_brazo_an_mi',1);
+                   $table->string('ana_ex_muslo_ppd',1);
+                   $table->string('ana_ex_muslo_ppi',1);
+                   $table->string('fun_liquido_amniotico',1);
+                   $table->integer('fun_indice_la');
+                   $table->string('fun_dp_ubicacion',1);
+                   $table->string('fun_dp_grado',10);
+                   $table->integer('fun_dp_grosor');
+                   $table->string('fun_dp_cordon_umbilical',1);
+                   $table->string('fun_dp_movimientos_respiratorios',1);
+                   $table->string('fun_dp_tono_fetal',1);
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('movimientos_feto',1);
+                   $table->string('reactividad_cardiaca',1);
+                   $table->string('liquido_amniotico',1);
+                   });
+                    
+                   Schema::create('eco_pelvico', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('posicionavf',1);
+                   $table->string('centrar',1);
+                   $table->string('patron',1);
+
+
+
+
+
+
+                   $table->string('linea',1);
+
+                   $table->integer('nroconsulta');
+
+
+
+
+
+
+                   $table->string('fondosacolibre',1);
+                   $table->string('fondosacootro',80);
+
+
+                   $table->string('formautero',30);
+
+                   $table->string('bordeutero',1);
+                   $table->datetime('fur')->nullable();
+                   $table->integer('gesta');
+                   $table->string('trans_convex',10);
+                   $table->string('trans_transvaginal',10);
+                   $table->string('vagina',10);
+                   $table->double('volumen_der');
+                   $table->double('volumen_izq');
+                   $table->string('vagina_llena',1);
+                   $table->string('posicionavf_d',1);
+                   $table->string('posicionrvf_d',1);
+                   $table->string('linea_continuo',1);
+                   $table->string('linea_homo',1);
+                   $table->string('linea_cavidad_u',1);
+                   $table->string('para',10);
+
+                   });
+                    
+                   Schema::create('eco_pelvico_c', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('posicionavf',1);
+                   $table->string('centrar',1);
+                   $table->string('patron',1);
+
+
+
+
+
+
+                   $table->string('linea',1);
+
+                   $table->integer('nroconsulta');
+
+
+
+
+
+
+                   $table->string('fondosacolibre',1);
+                   $table->string('fondosacootro',80);
+
+
+                   $table->string('formautero',30);
+
+                   $table->string('bordeutero',1);
+                   $table->datetime('fur')->nullable();
+                   $table->integer('gesta');
+                   $table->string('trans_convex',10);
+                   $table->string('trans_transvaginal',10);
+                   $table->string('vagina',10);
+                   $table->double('volumen_der');
+                   $table->double('volumen_izq');
+                   });
+                    
+                   Schema::create('ecocadiograma_fetal', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('biome_dbp');
+                   $table->integer('biome_dof');
+                   $table->integer('biome_cc');
+                   $table->integer('biome_relacion');
+                   $table->integer('biome_cardiaca');
+                   $table->integer('biome_toraxica');
+                   $table->integer('biome_ca');
+                   $table->integer('biome_humero');
+                   $table->integer('biome_femur');
+                   $table->integer('biome_saco');
+
+                   $table->string('pla_funi_placenta',1);
+                   $table->string('pla_funi_grado',10);
+                   $table->integer('pla_funi_grosor');
+                   $table->string('pla_funi_cordon_umb',10);
+                   $table->string('pla_funi_liquido_anm',10);
+                   $table->integer('pla_funi_pef');
+                   $table->string('pla_funi_sexo',1);
+
+
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('gesta');
+                   $table->integer('cesarea');
+                   $table->integer('parto');
+                   $table->integer('aborto');
+                   $table->string('otros',20);
+                   $table->datetime('fur')->nullable();
+                   $table->integer('eg');
+                   $table->integer('referido');
+
+                   });
+                    
+                   Schema::create('emision_pagos', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_emision');
+                   $table->datetime('fecha_emision')->nullable();
+                   $table->string('descripcion',100);
+                   $table->string('cod_banco',6);
+                   $table->string('estado',1);
+                   $table->double('monto_pagar');
+                   });
+                    
+                   Schema::create('emision_pagos_detalle', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_registro');
+                   $table->double('nro_emision');
+                   $table->double('nro_cxp');
+                   $table->double('nro_mov');
+                   $table->string('origen_cxp',2);
+                   $table->string('cxp_codigo',20);
+                   $table->string('cxp_descripcion',150);
+                   $table->datetime('fecha_emision')->nullable();
+                   $table->string('nro_documento',100);
+                   $table->string('tip_documento',2);
+                   $table->double('saldo_pagar');
+                   $table->double('monto_pagar');
+                   $table->string('estado',1);
+                   });
+                    
+                   Schema::create('employee', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('emp_id');
+                   $table->integer('manager_id');
+                   $table->string('emp_fname',30);
+                   $table->string('emp_lname',30);
+                   $table->integer('dept_id');
+                   $table->string('street',40);
+                   $table->string('city',20);
+                   $table->string('state',4);
+                   $table->string('zip_code',9);
+                   $table->string('phone',10);
+                   $table->string('status',1);
+                   $table->string('ss_number',11);
+
+                   $table->datetime('start_date')->nullable();
+                   $table->datetime('termination_date')->nullable();
+                   $table->datetime('birth_date')->nullable();
+                   $table->string('bene_health_ins',1);
+                   $table->string('bene_life_ins',1);
+                   $table->string('bene_day_care',1);
+                   $table->string('sex',1);
+                   });
+                    
+                   Schema::create('especial', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codeespecial',3);
+                   $table->string('especialidad',50);
+                   });
+                    
+                   Schema::create('evolucion', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('especialidad',200);
+                   $table->string('ciudad',20);
+                   $table->string('logo',500);
+                   $table->string('linea_1',90);
+                   $table->string('linea_2',90);
+                   $table->string('linea_3',90);
+                   $table->string('lineag_1',115);
+                   $table->string('lineag_2',115);
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('rif',40);
+                   $table->string('reporte_vacio',1);
+                   $table->string('moneda',10);
+                   $table->string('impuesto',20);
+                   $table->double('por_impues');
+                   $table->string('am_pm',1);
+                   $table->integer('cantidad_paciente');
+
+
+
+
+
+
+
+
+
+
+
+
+                   $table->integer('tiempo_paci');
+
+
+                   $table->string('lunes',1);
+                   $table->string('martes',1);
+                   $table->string('miercoles',1);
+                   $table->string('jueves',1);
+                   $table->string('viernes',1);
+                   $table->string('sabado',1);
+                   $table->string('domingo',1);
+                   $table->string('feriado',100);
+                   $table->string('cedula',20);
+                   $table->string('min_salud',20);
+                   $table->string('col_med',20);
+                   $table->string('cita_previa',1);
+                   $table->string('telefono',20);
+                   $table->string('cobra_honorarios',1);
+
+
+
+                   $table->string('accionista',1);
+                   $table->string('consultorio',10);
+                   $table->string('contrasena',20);
+                   $table->string('paga_iva',1);
+
+                   $table->string('sms_user',20);
+                   $table->string('sms_clave',20);
+                   $table->integer('sms_cantidad_total');
+                   $table->string('sms_telefono_llamada',30);
+                   $table->string('sms_sexo_medico',1);
+                   $table->string('sms_proveedor',1);
+                   $table->string('correo_med',100);
+                   });
+                    
+                   Schema::create('evolucion_2', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('especialidad',40);
+                   $table->string('ciudad',20);
+                   $table->string('logo',500);
+                   $table->string('linea_1',90);
+                   $table->string('linea_2',90);
+                   $table->string('linea_3',90);
+                   $table->string('lineag_1',115);
+                   $table->string('lineag_2',115);
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('rif',40);
+                   $table->string('reporte_vacio',1);
+                   $table->string('moneda',10);
+                   $table->string('impuesto',20);
+                   $table->double('por_impues');
+                   $table->string('am_pm',1);
+                   $table->integer('cantidad_paciente');
+
+
+
+
+
+
+
+
+
+
+
+
+                   $table->integer('tiempo_paci');
+
+
+                   $table->string('lunes',1);
+                   $table->string('martes',1);
+                   $table->string('miercoles',1);
+                   $table->string('jueves',1);
+                   $table->string('viernes',1);
+                   $table->string('sabado',1);
+                   $table->string('domingo',1);
+                   $table->string('feriado',100);
+                   $table->string('cedula',20);
+                   $table->string('min_salud',20);
+                   $table->string('col_med',20);
+                   $table->string('cita_previa',1);
+                   $table->string('telefono',20);
+                   $table->string('cobra_honorarios',1);
+
+
+
+                   $table->string('accionista',1);
+                   $table->string('consultorio',10);
+                   $table->string('contrasena',20);
+                   $table->string('paga_iva',1);
+
+                   });
+                    
+                   Schema::create('evolucion_c', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('especialidad',40);
+                   $table->string('ciudad',20);
+                   $table->string('logo',500);
+                   $table->string('linea_1',90);
+                   $table->string('linea_2',90);
+                   $table->string('linea_3',90);
+                   $table->string('lineag_1',115);
+                   $table->string('lineag_2',115);
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('rif',40);
+                   $table->string('reporte_vacio',1);
+                   $table->string('moneda',10);
+                   $table->string('impuesto',20);
+                   $table->double('por_impues');
+                   $table->string('am_pm',1);
+                   $table->integer('cantidad_paciente');
+
+
+
+
+
+
+
+
+
+
+
+
+                   $table->integer('tiempo_paci');
+
+
+                   $table->string('lunes',1);
+                   $table->string('martes',1);
+                   $table->string('miercoles',1);
+                   $table->string('jueves',1);
+                   $table->string('viernes',1);
+                   $table->string('sabado',1);
+                   $table->string('domingo',1);
+                   $table->string('feriado',100);
+                   $table->string('cedula',20);
+                   $table->string('min_salud',20);
+                   $table->string('col_med',20);
+                   $table->string('cita_previa',1);
+                   $table->string('telefono',20);
+                   $table->string('cobra_honorarios',1);
+
+
+
+                   $table->string('accionista',1);
+                   $table->string('consultorio',10);
+                   $table->string('contrasena',20);
+                   $table->string('paga_iva',1);
+                   });
+                    
+                   Schema::create('evolucion_copy', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('especialidad',40);
+                   $table->string('ciudad',20);
+                   $table->string('logo',500);
+                   $table->string('linea_1',90);
+                   $table->string('linea_2',90);
+                   $table->string('linea_3',90);
+                   $table->string('lineag_1',115);
+                   $table->string('lineag_2',115);
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('rif',40);
+                   $table->string('reporte_vacio',1);
+                   $table->string('moneda',10);
+                   $table->string('impuesto',20);
+                   $table->double('por_impues');
+                   $table->string('am_pm',1);
+                   $table->integer('cantidad_paciente');
+
+
+
+
+
+
+
+
+
+
+
+
+                   $table->integer('tiempo_paci');
+
+
+                   $table->string('lunes',1);
+                   $table->string('martes',1);
+                   $table->string('miercoles',1);
+                   $table->string('jueves',1);
+                   $table->string('viernes',1);
+                   $table->string('sabado',1);
+                   $table->string('domingo',1);
+                   $table->string('feriado',100);
+                   $table->string('cedula',20);
+                   $table->string('min_salud',20);
+                   $table->string('col_med',20);
+                   $table->string('cita_previa',1);
+                   $table->string('telefono',20);
+                   $table->string('cobra_honorarios',1);
+
+
+
+                   $table->string('accionista',1);
+                   $table->string('consultorio',10);
+                   $table->string('contrasena',20);
+                   $table->string('paga_iva',1);
+                   });
+                    
+                   Schema::create('evolucion_copy2w', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('especialidad',200);
+                   $table->string('ciudad',20);
+                   $table->string('logo',500);
+                   $table->string('linea_1',90);
+                   $table->string('linea_2',90);
+                   $table->string('linea_3',90);
+                   $table->string('lineag_1',115);
+                   $table->string('lineag_2',115);
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('rif',40);
+                   $table->string('reporte_vacio',1);
+                   $table->string('moneda',10);
+                   $table->string('impuesto',20);
+                   $table->double('por_impues');
+                   $table->string('am_pm',1);
+                   $table->integer('cantidad_paciente');
+
+
+
+
+
+
+
+
+
+
+
+
+                   $table->integer('tiempo_paci');
+
+
+                   $table->string('lunes',1);
+                   $table->string('martes',1);
+                   $table->string('miercoles',1);
+                   $table->string('jueves',1);
+                   $table->string('viernes',1);
+                   $table->string('sabado',1);
+                   $table->string('domingo',1);
+                   $table->string('feriado',100);
+                   $table->string('cedula',20);
+                   $table->string('min_salud',20);
+                   $table->string('col_med',20);
+                   $table->string('cita_previa',1);
+                   $table->string('telefono',20);
+                   $table->string('cobra_honorarios',1);
+
+
+
+                   $table->string('accionista',1);
+                   $table->string('consultorio',10);
+                   $table->string('contrasena',20);
+                   $table->string('paga_iva',1);
+
+                   $table->string('sms_user',20);
+                   $table->string('sms_clave',20);
+                   $table->integer('sms_cantidad_total');
+                   $table->string('sms_telefono_llamada',30);
+                   $table->string('sms_sexo_medico',1);
+                   $table->string('sms_proveedor',1);
+                   $table->string('correo_med',100);
+                   });
+                    
+                   Schema::create('evolucion_platas', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('especialidad',40);
+                   $table->string('ciudad',20);
+                   $table->string('logo',500);
+                   $table->string('linea_1',90);
+                   $table->string('linea_2',90);
+                   $table->string('linea_3',90);
+                   $table->string('lineag_1',115);
+                   $table->string('lineag_2',115);
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('rif',40);
+                   $table->string('reporte_vacio',1);
+                   $table->string('moneda',10);
+                   $table->string('impuesto',20);
+                   $table->double('por_impues');
+                   $table->string('am_pm',1);
+                   $table->integer('cantidad_paciente');
+
+
+
+
+
+
+
+
+
+
+
+
+                   $table->integer('tiempo_paci');
+
+
+                   $table->string('lunes',1);
+                   $table->string('martes',1);
+                   $table->string('miercoles',1);
+                   $table->string('jueves',1);
+                   $table->string('viernes',1);
+                   $table->string('sabado',1);
+                   $table->string('domingo',1);
+                   $table->string('feriado',100);
+                   $table->string('cedula',20);
+                   $table->string('min_salud',20);
+                   $table->string('col_med',20);
+                   $table->string('cita_previa',1);
+                   $table->string('telefono',20);
+                   $table->string('cobra_honorarios',1);
+
+
+
+                   $table->string('accionista',1);
+                   $table->string('consultorio',10);
+                   $table->string('contrasena',20);
+                   $table->string('paga_iva',1);
+
+                   });
+                    
+                   Schema::create('examen_fisico', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+
+
+
+
+
+
+
+
+
+                   });
+                    
+                   Schema::create('examen_fisico_nuevo', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('talla');
+                   $table->integer('peso');
+
+
+
+
+
+
+
+
+
+
+                   $table->string('tension',8);
+
+
+
+
+
+
+                   });
+                    
+                   Schema::create('examen_fisico_nuevo_copy', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('talla');
+                   $table->integer('peso');
+
+
+
+
+
+
+
+
+
+
+                   $table->string('tension',8);
+
+
+
+
+
+
+                   });
+                    
+                   Schema::create('examen_obs', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->integer('numconsulta');
+
+                   });
+                    
+                   Schema::create('examen_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codeexamen',8);
+                   $table->string('resultado',30);
+                   $table->string('vinculante',1);
+                   });
+                    
+                   Schema::create('examen_pareja', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codeexamen',8);
+                   $table->integer('orden');
+                   $table->string('cedula',10);
+                   $table->string('nombre',200);
+                   $table->string('procedencia',4);
+                   });
+                    
+                   Schema::create('examenes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codeexamen',8);
+                   $table->string('examen',45);
+                   $table->string('codetipo',10);
+                   });
+                    
+                   Schema::create('factura_cliente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numfactura');
+                   $table->string('cedu_rif',15);
+                   $table->datetime('fecha_factura')->nullable();
+                   $table->datetime('fecha_vence_fact')->nullable();
+                   $table->datetime('fecha_cance_fact')->nullable();
+                   $table->string('cliente',2);
+                   $table->string('status_factura',1);
+                   $table->string('tipo_factura',1);
+                   $table->string('paciente',10);
+                   $table->string('nom_paciente',60);
+                   $table->string('tipo_precio',1);
+                   $table->string('nro_orden',10);
+                   $table->double('total_costo');
+                   $table->double('total_neto');
+                   $table->double('total_bruto');
+                   $table->double('total_final');
+                   $table->double('total_descuento');
+                   $table->double('descuento_linea');
+
+
+                   $table->double('monto_pac');
+                   $table->double('monto_emp');
+                   $table->integer('numero_consulta');
+                   $table->integer('numero_historia');
+                   $table->string('tipo_doc',3);
+                   $table->double('nro_cxp');
+                   $table->integer('medico');
+                   });
+                    
+                   Schema::create('facturas_compras', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('id_factura_compra')->unsigned();
+                   $table->string('cod_prov',6);
+                   $table->integer('id_tipo_concepto')->unsigned();
+                   $table->datetime('fecha')->nullable();
+                   $table->string('estado',1);
+                   $table->string('nro_seniat',25);
+                   $table->string('nro_factura',25);
+                   $table->double('mto_neto');
+                   $table->double('mto_porc_iva');
+                   $table->double('mto_iva');
+                   $table->double('mto_porc_ret_iva');
+                   $table->double('mto_ret_iva');
+                   $table->double('mto_porc_ret_isrl');
+                   $table->double('mto_ret_isrl');
+                   $table->double('mto_total_general');
+                   $table->double('nro_cxp');
+                   $table->double('mto_total');
+                   });
+                    
+                   Schema::create('facturas_compras_detalle', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('id_registro')->unsigned();
+                   $table->integer('id_fac_prov')->unsigned();
+                   $table->string('des_concepto',100);
+                   $table->double('cantidad');
+                   $table->double('monto');
+                   $table->double('monto_total');
+                   $table->integer('id_factura_compra')->unsigned();
+                   });
+                    
+                   Schema::create('fechas_libres', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('clave');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('motivo',200);
+                   });
+                    
+                   Schema::create('formato_print', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',4);
+                   $table->string('titulo',200);
+
+                   $table->string('tipo',10);
+                   });
+                    
+                   Schema::create('his_con_pre_factura', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('id_registro')->unsigned();
+                   $table->integer('numhistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codigo',8);
+                   $table->string('descripcion',45);
+                   $table->double('cantidad');
+                   $table->double('monto');
+                   });
+                    
+                   Schema::create('hospitalizacion', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+
+
+
+                   $table->string('habitacion',1);
+                   $table->string('hospital',60);
+                   });
+                    
+                   Schema::create('imagen_consulta', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+
+                   $table->string('imagen',256);
+                   $table->integer('orden');
+                   });
+                    
+                   Schema::create('imagen_pacientes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->string('imagen',256);
+                   $table->string('imagen2',256);
+                   });
+                    
+                   Schema::create('imagen_pacientes_2', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->string('imagen',256);
+                   $table->string('imagen2',256);
+                   });
+                    
+                   Schema::create('imagenes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('descripcion',30);
+                   $table->string('imagen',256);
+                   });
+                    
+                   Schema::create('informe', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('para',50);
+
+                   $table->datetime('fe_cha')->nullable();
+                   });
+                    
+                   Schema::create('intenven_servi', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',3);
+                   $table->string('nombre',300);
+                   $table->double('precio_principal');
+                   $table->double('precio_auxiliar');
+                   });
+                    
+                   Schema::create('interven_consulta', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->string('codigo_inter',3);
+
+                   $table->string('descripcion',100);
+                   });
+                    
+                   Schema::create('listado', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('tipo',5);
+                   $table->string('descripcion_tipo',30);
+                   $table->string('segundo',5);
+                   });
+                    
+                   Schema::create('motivo_cita', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',10);
+                   $table->string('tipo_atencion',100);
+                   });
+                    
+                   Schema::create('motivo_consulta_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codemotivo',4);
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('descripcion',50);
+                   $table->string('detalle',300);
+                   });
+                    
+                   Schema::create('motivo_factura', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',8);
+                   $table->string('descripcion',45);
+                   $table->double('monto');
+                   $table->double('monto_seg');
+                   $table->string('tipo',1);
+                   });
+                    
+                   Schema::create('motivo_factura_prov', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('id_fac_prov')->unsigned();
+                   $table->string('des_concepto',100);
+                   $table->double('monto');
+                   });
+                    
+                   Schema::create('motivos_consulta', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codemotivo',4);
+                   $table->string('descripcion',40);
+                   });
+                    
+                   Schema::create('operadores', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('primera',15);
+                   $table->string('segunda',10);
+                   $table->string('nonbre',50);
+                   $table->string('nivel',1);
+                   });
+                    
+                   Schema::create('paciente_no_regi', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+
+                   $table->string('apellidos',100);
+                   $table->string('nombres',100);
+                   $table->string('celular',30);
+                   $table->string('motivo',10);
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('medico');
+                   $table->string('registrado',1);
+
+                   });
+                    
+                   Schema::create('pacientes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('nac',1);
+                   $table->string('cedula',8);
+                   $table->string('apellidos',25);
+                   $table->string('nombres',25);
+                   $table->string('sexo',1);
+                   $table->datetime('fnacimiento')->nullable();
+                   $table->string('lnacimiento',100);
+                   $table->string('codeestado',1);
+                   $table->string('direccion',200);
+                   $table->string('telefono',20);
+                   $table->datetime('fingreso')->nullable();
+                   $table->string('escolaridad',100);
+                   $table->string('ocupacion',100);
+                   $table->string('codesegemp',3);
+                   $table->integer('numhistoria');
+                   $table->string('foto_pac',300);
+                   $table->string('profesion',50);
+                   $table->string('email',100);
+                   $table->string('dependencia',30);
+                   $table->integer('medico');
+                   $table->string('sms',1);
+                   });
+                    
+                   Schema::create('pago_quiru', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('cod_pagos');
+                   $table->integer('consecuti');
+                   $table->datetime('fecha')->nullable();
+                   $table->double('monto_total');
+                   $table->double('abono');
+                   $table->double('resta');
+                   $table->string('pago',1);
+
+                   });
+                    
+                   Schema::create('pbcatcol', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('pbc_tnam',129);
+                   $table->integer('pbc_tid');
+                   $table->string('pbc_ownr',129);
+                   $table->string('pbc_cnam',129);
+
+                   $table->string('pbc_labl',254);
+
+                   $table->string('pbc_hdr',254);
+
+
+                   $table->string('pbc_mask',31);
+
+
+
+                   $table->string('pbc_ptrn',31);
+                   $table->string('pbc_bmap',1);
+                   $table->string('pbc_init',254);
+                   $table->string('pbc_cmnt',254);
+                   $table->string('pbc_edit',31);
+                   $table->string('pbc_tag',254);
+                   });
+                    
+                   Schema::create('pbcatedt', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('pbe_name',30);
+                   $table->string('pbe_edit',254);
+
+                   $table->integer('pbe_cntr');
+
+                   $table->integer('pbe_flag');
+                   $table->string('pbe_work',32);
+                   });
+                    
+                   Schema::create('pbcatfmt', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('pbf_name',30);
+                   $table->string('pbf_frmt',254);
+
+                   $table->integer('pbf_cntr');
+                   });
+                    
+                   Schema::create('pbcattbl', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('pbt_tnam',129);
+                   $table->integer('pbt_tid');
+                   $table->string('pbt_ownr',129);
+
+
+                   $table->string('pbd_fitl',1);
+                   $table->string('pbd_funl',1);
+
+
+                   $table->string('pbd_ffce',18);
+
+
+                   $table->string('pbh_fitl',1);
+                   $table->string('pbh_funl',1);
+
+
+                   $table->string('pbh_ffce',18);
+
+
+                   $table->string('pbl_fitl',1);
+                   $table->string('pbl_funl',1);
+
+
+                   $table->string('pbl_ffce',18);
+                   $table->string('pbt_cmnt',254);
+                   });
+                    
+                   Schema::create('pbcatvld', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('pbv_name',30);
+                   $table->string('pbv_vald',254);
+
+                   $table->integer('pbv_cntr');
+                   $table->string('pbv_msg',254);
+                   });
+                    
+                   Schema::create('pre_natal_desarrollo_fino', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('eg_fur',20);
+                   $table->string('eg_eco',20);
+                   $table->string('peso',5);
+                   $table->string('ta',7);
+                   $table->string('au',5);
+                   $table->string('mf',20);
+                   $table->string('presentacion',20);
+                   $table->string('edemas',20);
+                   $table->string('dbp',5);
+                   $table->string('lf',20);
+                   $table->string('ac_cardiaca',20);
+                   $table->string('la',20);
+                   $table->string('sg_cri',5);
+                   $table->string('plac_grado',20);
+                   $table->integer('gesta_clave');
+                   $table->integer('consulta');
+                   $table->string('femur',5);
+                   $table->string('lcc',5);
+                   $table->string('dbpf',5);
+                   $table->string('varice',5);
+                   $table->string('peso_fetal',5);
+                   $table->string('foco_f',5);
+                   $table->string('multiple',1);
+                   $table->integer('cantidad');
+                   });
+                    
+                   Schema::create('pre_natal_observaciones', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->datetime('fur')->nullable();
+                   $table->string('menarquia',10);
+                   $table->integer('gestas');
+                   $table->string('parto',10);
+                   $table->string('tipiaje',10);
+
+                   $table->string('tipiaje_cony',10);
+                   $table->integer('gesta_clave');
+                   $table->integer('partos');
+                   $table->integer('cesarea');
+                   $table->integer('abortos');
+                   $table->integer('otros');
+                   $table->string('final',1);
+                   $table->string('multiple',1);
+                   $table->integer('cantidad');
+                   });
+                    
+                   Schema::create('prena_exames_b', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('gesta_clave');
+                   $table->string('hemoglobina',5);
+                   $table->string('hematoc',5);
+                   $table->string('glob_blanco',5);
+                   $table->string('neut_linf',5);
+                   $table->string('vsg',5);
+                   $table->string('plaquetas',5);
+                   $table->string('glicemia_basal',5);
+                   $table->string('glicemia_post_prandial',5);
+                   $table->string('insulina_basal',5);
+                   $table->string('insulina_post_prandial',5);
+                   $table->string('urea',5);
+                   $table->string('creatinina',5);
+                   $table->string('ac_urico',5);
+                   $table->string('triglicer',5);
+                   $table->string('colesterol',5);
+                   $table->string('hdl_colest',5);
+                   $table->string('ldl_colest',5);
+                   $table->string('hiv',1);
+                   $table->string('vdrl',1);
+
+                   $table->string('urocultivo',1);
+
+                   $table->string('t3',5);
+                   $table->string('t4',5);
+                   $table->string('tsh',5);
+                   $table->string('fsh',5);
+                   $table->string('lh',5);
+                   $table->string('estradiol',5);
+                   $table->string('progester',5);
+                   $table->string('prolactina',5);
+                   $table->string('toxo_igm',1);
+                   $table->string('toxo_igg',1);
+
+                   });
+                    
+                   Schema::create('presupuesto_operatorio', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('documento');
+                   $table->integer('historia');
+                   $table->string('diagnostico',300);
+                   $table->string('intervencion',100);
+                   $table->integer('ayudantes');
+                   $table->integer('dias_hospi');
+                   $table->string('arco_c',1);
+                   $table->string('astroscopio',1);
+                   $table->string('sangre_qx_tipo_1',40);
+                   $table->string('sangre_qx_tipo_2',10);
+                   $table->double('sangre_qx_tipo_1_cantidad');
+                   $table->double('sangre_qx_tipo_2_cantidad');
+                   $table->double('material_sintesis');
+                   $table->double('instrumental_traumatologico');
+                   $table->double('honorarios');
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('estado',1);
+                   $table->string('clinica',3);
+                   $table->string('procedencia',3);
+                   $table->integer('horas_quirofano');
+                   $table->string('rx_torax',1);
+                   $table->string('rx_postoperatoria',1);
+                   $table->string('fluoroscopio',1);
+                   $table->string('eval_preoperatoria',1);
+                   $table->string('otros_estudios_de_imagenes',100);
+                   $table->string('interconsultas',100);
+                   $table->double('h_1_ayudante');
+                   $table->double('h_2_ayudante');
+                   $table->double('h_anestesiologo');
+                   $table->double('h_tratante');
+                   $table->double('h_artroscopio');
+                   });
+                    
+                   Schema::create('presupuesto_operatorio_copy', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('documento');
+                   $table->integer('historia');
+                   $table->string('diagnostico',300);
+                   $table->string('intervencion',100);
+                   $table->integer('ayudantes');
+                   $table->integer('dias_hospi');
+                   $table->string('arco_c',1);
+                   $table->string('astroscopio',1);
+                   $table->string('sangre_qx_tipo_1',40);
+                   $table->string('sangre_qx_tipo_2',10);
+                   $table->double('sangre_qx_tipo_1_cantidad');
+                   $table->double('sangre_qx_tipo_2_cantidad');
+                   $table->double('material_sintesis');
+                   $table->double('instrumental_traumatologico');
+                   $table->double('honorarios');
+
+                   $table->datetime('fecha')->nullable();
+                   $table->string('estado',1);
+                   $table->string('clinica',3);
+                   $table->string('procedencia',3);
+                   $table->integer('horas_quirofano');
+                   $table->string('rx_torax',1);
+                   $table->string('rx_postoperatoria',1);
+                   $table->string('fluoroscopio',1);
+                   $table->string('eval_preoperatoria',1);
+                   $table->string('otros_estudios_de_imagenes',100);
+                   $table->string('interconsultas',100);
+                   $table->double('h_1_ayudante');
+                   $table->double('h_2_ayudante');
+                   $table->double('h_anestesiologo');
+                   $table->double('h_tratante');
+                   $table->double('h_artroscopio');
+                   });
+                    
+                   Schema::create('presupuesto_planti', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('consecutivo');
+                   $table->string('tipo_precio',1);
+                   $table->double('total_costo');
+                   $table->double('total_final');
+
+                   $table->string('tipo_doc',3);
+                   $table->string('nom_presupuesto',100);
+                   });
+                    
+                   Schema::create('proveedor', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('cod_prov',6);
+                   $table->string('proveedor',150);
+                   $table->string('rif',20);
+                   $table->string('direccion',300);
+                   $table->string('telefono',20);
+                   $table->string('contacto',100);
+                   $table->string('celular',20);
+                   });
+                    
+                   Schema::create('radiologia_obs', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->integer('numconsulta');
+
+                   });
+                    
+                   Schema::create('radiologia_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('coderadio',8);
+                   $table->integer('nroopcion');
+                   $table->integer('orden');
+                   });
+                    
+                   Schema::create('radiologias', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('coderadio',8);
+                   $table->string('estudio',45);
+                   $table->string('codetipo',10);
+
+                   $table->string('tipo',40);
+                   });
+                    
+                   Schema::create('recipe_detalle', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->integer('recipe');
+                   $table->datetime('fe_emision')->nullable();
+                   $table->integer('fe_vence');
+
+                   });
+                    
+                   Schema::create('recipe_grupo', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',4);
+                   $table->string('tratamiento',100);
+                   });
+                    
+                   Schema::create('recipe_grupo_detalle', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codigo',4);
+                   $table->string('codemedicina',8);
+                   $table->string('descripcion',100);
+
+                   $table->integer('cantidad');
+                   $table->integer('orden');
+                   });
+                    
+                   Schema::create('recipe2', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codemedicina',8);
+
+                   $table->integer('cantidad');
+                   $table->string('descripcion',200);
+                   $table->integer('orden');
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('recipe');
+                   $table->string('comple',1);
+                   });
+                    
+                   Schema::create('recipes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codemedicina',8);
+
+                   $table->integer('cantidad');
+                   $table->string('descripcion',200);
+                   $table->integer('orden');
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('recipe');
+                   $table->string('comple',1);
+                   });
+                    
+                   Schema::create('recipes_pareja', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codemedicina',8);
+
+                   $table->integer('cantidad');
+                   $table->string('descripcion',200);
+                   $table->integer('orden');
+                   $table->string('cedula',10);
+                   $table->string('nombre',200);
+                   $table->string('procedencia',4);
+                   });
+                    
+                   Schema::create('referencia', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+
+
+                   });
+                    
+                   Schema::create('reg_empl_frec_nomina', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('frecuencia_nomina',2);
+                   $table->string('nombre_frecuencia',50);
+                   });
+                    
+                   Schema::create('reg_empl_tipo_nomina', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('tipo_nomina',2);
+                   $table->string('nombre_nomina',50);
+                   });
+                    
+                   Schema::create('registro_empleados', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_empleado');
+                   $table->datetime('fecha_creacion')->nullable();
+                   $table->string('status',1);
+                   $table->string('cedula_empleado',20);
+                   $table->string('nombre_empleado',100);
+                   $table->string('tipo_nomina',2);
+                   $table->string('frecuencia_nomina',2);
+                   $table->double('monto_s1');
+                   $table->double('monto_s2');
+                   $table->double('monto_s3');
+                   $table->double('monto_s4');
+                   $table->double('monto_total');
+                   });
+                    
+                   Schema::create('registro_empleados_eje', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_nomina');
+                   $table->string('descripcion',100);
+                   $table->datetime('fecha_aplicacion')->nullable();
+                   $table->string('status',1);
+                   $table->string('tipo_nomina',2);
+                   $table->string('frecuencia_nomina',2);
+                   $table->double('monto_total');
+                   });
+                    
+                   Schema::create('registro_empleados_eje_detalle', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('nro_nomina');
+                   $table->double('nro_empleado');
+                   $table->double('nro_cxp');
+                   $table->double('monto_empleado');
+                   });
+                    
+                   Schema::create('registro_operaciones', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('registro');
+                   $table->datetime('dia_registro')->nullable();
+
+                   $table->string('operador',10);
+                   $table->string('status',10);
+
+
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->string('medico',50);
+                   $table->string('paciente',70);
+                   });
+                    
+                   Schema::create('reposo_paciente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('codereposo',1);
+                   $table->datetime('fdesde')->nullable();
+                   $table->integer('numdias');
+
+                   });
+                    
+                   Schema::create('representante', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('numhistoria');
+                   $table->string('nombre',40);
+                   $table->string('codeparentesco',1);
+                   $table->string('direccion',60);
+                   });
+                    
+                   Schema::create('seg_emp', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codesegemp',3);
+                   $table->string('nombre',150);
+                   $table->string('rif',50);
+                   $table->string('direccion',350);
+                   $table->string('telef',50);
+                   });
+                    
+                   Schema::create('sms_compra', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('conse_compra');
+                   $table->datetime('fecha_compra')->nullable();
+                   $table->double('monto_compra');
+                   $table->integer('cantidad_compra');
+                   });
+                    
+                   Schema::create('sms_enviados', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->double('conta');
+                   $table->string('usuario',10);
+                   $table->string('medico',60);
+                   $table->string('proveedor',1);
+                   $table->string('numero',11);
+                   $table->string('mensaje',150);
+                   $table->datetime('fecha')->nullable();
+                   $table->string('tipo',1);
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   });
+                    
+                   Schema::create('sms_envio_pac', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('nrohistoria');
+                   $table->integer('nroconsulta');
+                   $table->string('numero_cel',14);
+                   $table->string('texto_sms',160);
+                   $table->integer('orden');
+                   });
+                    
+                   Schema::create('texto_doppler', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('nivel',10);
+
+                   });
+                    
+                   Schema::create('tipo_antecedente', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codetipo',2);
+                   $table->string('descripcion',40);
+                   $table->string('tipoantecedente',1);
+                   });
+                    
+                   Schema::create('tipos_conceptos', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('id_tipo_concepto')->unsigned();
+                   $table->string('des_concepto',100);
+                   });
+                    
+                   Schema::create('tipos_documentos', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('tip_documento',2);
+                   $table->string('des_documento',100);
+                   });
+                    
+                   Schema::create('tipos_examenes', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codetipo',10);
+                   $table->string('tipo',40);
+                   });
+                    
+                   Schema::create('tipos_recipe', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codetipo',10);
+                   $table->string('tipo',40);
+                   });
+                    
+                   Schema::create('ultra_abdominal', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('transductor',30);
+                   $table->integer('referido');
+
+
+
+
+
+
+
+                   $table->string('vejiga_urina',1);
+                   $table->string('vol_res_v_p_m',1);
+                   $table->string('ascitis',1);
+                   $table->string('retroperitoneo',1);
+                   $table->string('vasos_sanguineos',1);
+
+
+
+                   });
+                    
+                   Schema::create('ultra_mama', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->datetime('fecha')->nullable();
+                   $table->integer('referido');
+                   $table->string('menarquia',20);
+                   $table->string('para',60);
+                   $table->string('quirurgicos',60);
+                   $table->string('hormonas',100);
+                   $table->string('tranductor',100);
+
+
+
+
+
+
+                   });
+                    
+                   Schema::create('ultra_prostatico', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->datetime('fecha')->nullable();
+                   $table->double('psa_total');
+                   $table->double('psa_libre');
+                   $table->double('psa_relacion');
+
+
+                   $table->string('anestesia',10);
+                   $table->double('diametro_long');
+                   $table->double('diametro_trans');
+                   $table->double('diametro_anterop');
+                   $table->double('volumen');
+                   $table->double('densidad');
+                   $table->string('capsula',10);
+                   $table->string('nodulos',10);
+                   $table->string('nodulos_ubicacion',10);
+                   $table->string('nodulos_caracteristicas',300);
+                   $table->double('protocolo_biopsia_cilindros_de');
+                   $table->double('protocolo_biopsia_cilindros_iz');
+
+                   $table->integer('medico_1');
+                   $table->integer('medico_2');
+                   $table->string('equipo',20);
+                   $table->string('trasductor',20);
+                   $table->double('frecuencia');
+                   $table->string('diametro_ld',10);
+                   $table->string('diametro_li',10);
+                   $table->double('diametro_long_ld');
+                   $table->double('diametro_long_li');
+                   $table->double('diametro_trans_ld');
+                   $table->double('diametro_trans_li');
+                   $table->double('diametro_anterop_ld');
+                   $table->double('diametro_anterop_li');
+
+
+                   });
+                    
+                   Schema::create('ultra_testiculos', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('equipo',20);
+                   $table->string('transductor',20);
+                   $table->double('frecuencia');
+
+                   $table->double('td_long');
+                   $table->double('td_tranv');
+                   $table->double('td_post');
+
+
+                   $table->double('td_epididimo_med_1');
+                   $table->double('td_epididimo_med_2');
+                   $table->string('td_hidrocele',50);
+                   $table->double('td_diametro_plexo');
+                   $table->double('ti_long');
+                   $table->double('ti_tranv');
+                   $table->double('ti_post');
+
+
+                   $table->double('ti_epididimo_med_1');
+                   $table->double('ti_epididimo_med_2');
+                   $table->string('ti_hidrocele',50);
+                   $table->double('ti_diametro_plexo');
+
+
+                   $table->integer('medico_1');
+                   $table->integer('medico_2');
+
+
+
+
+                   });
+                    
+                   Schema::create('ultra_tiroides_musculo', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('transductor',30);
+                   $table->integer('referido');
+
+
+
+                   });
+                    
+                   Schema::create('vacunas_movimiento', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('vacuna',4);
+                   $table->integer('historia');
+                   $table->integer('consulta');
+                   $table->integer('dosis');
+                   $table->datetime('fecha')->nullable();
+                   $table->string('descri_vacuna',100);
+                   $table->string('descri_paciente',100);
+                   $table->string('empresa',3);
+                   $table->integer('disponible');
+                   $table->double('precio');
+                   });
+                    
+                   Schema::create('vademecum', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codemedicina',8);
+                   $table->string('nombregenerico',35);
+                   $table->string('nombrecomercial',35);
+
+
+                   $table->string('presentacion',50);
+                   $table->double('concentracion');
+                   $table->double('cada');
+                   $table->integer('durante');
+                   $table->double('pvc');
+                   $table->double('pvs');
+                   $table->double('dosis');
+                   $table->string('codetipo',10);
+                   $table->string('sico',1);
+                   $table->string('nombrecomercial1',40);
+                   $table->string('nombrecomercial2',40);
+                   $table->string('nombrecomercial3',40);
+
+                   $table->string('sicome',1);
+                   $table->string('sicome1',1);
+                   $table->string('sicome2',1);
+                   $table->string('sicome3',1);
+                   });
+                    
+                   Schema::create('vademecum_m', function (Blueprint $table) {
+                   $table->increments('id');
+                   $table->timestamps();
+                   $table->string('codemedicina',200);
+                   $table->string('nombregenerico',35);
+                   $table->string('nombrecomercial',35);
+
+
+                   $table->string('presentacion',35);
+                   $table->double('concentracion');
+                   $table->double('cada');
+                   $table->integer('durante');
+                   $table->double('pvc');
+                   $table->double('pvs');
+                   $table->double('dosis');
+                   $table->string('sico',1);
+                   $table->string('nombrecomercial1',40);
+                   $table->string('nombrecomercial2',40);
+                   $table->string('nombrecomercial3',40);
+
+                   $table->string('sicome',1);
+                   $table->string('sicome1',1);
+                   $table->string('sicome2',1);
+                   $table->string('sicome3',1);
+                   });
+                    
+                   $this->relaciones();
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+
+                   Schema::disableForeignKeyConstraints();
+                    
+                   Schema::dropIfExists('antece_paciente');
+                   Schema::dropIfExists('antecedentes');
+                   Schema::dropIfExists('bancos');
+                   Schema::dropIfExists('baremo_quiru');
+                   Schema::dropIfExists('clinicas');
+                   Schema::dropIfExists('cola');
+                   Schema::dropIfExists('cola_dia_no_labor');
+                   Schema::dropIfExists('constancia_obs');
+                   Schema::dropIfExists('consultas');
+                   Schema::dropIfExists('consultas_n');
+                   Schema::dropIfExists('consultorios');
+                   Schema::dropIfExists('cuentas_x_pagar');
+                   Schema::dropIfExists('cuentas_x_pagar_mov');
+                   Schema::dropIfExists('dd_arterial_mi');
+                   Schema::dropIfExists('department');
+                   Schema::dropIfExists('detalles_factura_cliente');
+                   Schema::dropIfExists('detalles_factura_cliente_copy');
+                   Schema::dropIfExists('detalles_presupuesto_plantilla');
+                   Schema::dropIfExists('diagnostico_paciente');
+                   Schema::dropIfExists('diagnosticos');
+                   Schema::dropIfExists('dias_semana');
+                   Schema::dropIfExists('dieta_paciente');
+                   Schema::dropIfExists('doctores');
+                   Schema::dropIfExists('eco_doppler');
+                   Schema::dropIfExists('eco_obstetrico');
+                   Schema::dropIfExists('eco_obstetrico_tercer');
+                   Schema::dropIfExists('eco_obstetrico_tercer_2');
+                   Schema::dropIfExists('eco_obstetrico_tercer_2_o');
+                   Schema::dropIfExists('eco_obstetrico_tercer_o');
+                   Schema::dropIfExists('eco_pelvico');
+                   Schema::dropIfExists('eco_pelvico_c');
+                   Schema::dropIfExists('ecocadiograma_fetal');
+                   Schema::dropIfExists('emision_pagos');
+                   Schema::dropIfExists('emision_pagos_detalle');
+                   Schema::dropIfExists('employee');
+                   Schema::dropIfExists('especial');
+                   Schema::dropIfExists('evolucion');
+                   Schema::dropIfExists('evolucion_2');
+                   Schema::dropIfExists('evolucion_c');
+                   Schema::dropIfExists('evolucion_copy');
+                   Schema::dropIfExists('evolucion_copy2w');
+                   Schema::dropIfExists('evolucion_platas');
+                   Schema::dropIfExists('examen_fisico');
+                   Schema::dropIfExists('examen_fisico_nuevo');
+                   Schema::dropIfExists('examen_fisico_nuevo_copy');
+                   Schema::dropIfExists('examen_obs');
+                   Schema::dropIfExists('examen_paciente');
+                   Schema::dropIfExists('examen_pareja');
+                   Schema::dropIfExists('examenes');
+                   Schema::dropIfExists('factura_cliente');
+                   Schema::dropIfExists('facturas_compras');
+                   Schema::dropIfExists('facturas_compras_detalle');
+                   Schema::dropIfExists('fechas_libres');
+                   Schema::dropIfExists('formato_print');
+                   Schema::dropIfExists('his_con_pre_factura');
+                   Schema::dropIfExists('hospitalizacion');
+                   Schema::dropIfExists('imagen_consulta');
+                   Schema::dropIfExists('imagen_pacientes');
+                   Schema::dropIfExists('imagen_pacientes_2');
+                   Schema::dropIfExists('imagenes');
+                   Schema::dropIfExists('informe');
+                   Schema::dropIfExists('intenven_servi');
+                   Schema::dropIfExists('interven_consulta');
+                   Schema::dropIfExists('listado');
+                   Schema::dropIfExists('motivo_cita');
+                   Schema::dropIfExists('motivo_consulta_paciente');
+                   Schema::dropIfExists('motivo_factura');
+                   Schema::dropIfExists('motivo_factura_prov');
+                   Schema::dropIfExists('motivos_consulta');
+                   Schema::dropIfExists('operadores');
+                   Schema::dropIfExists('paciente_no_regi');
+                   Schema::dropIfExists('pacientes');
+                   Schema::dropIfExists('pago_quiru');
+                   Schema::dropIfExists('pbcatcol');
+                   Schema::dropIfExists('pbcatedt');
+                   Schema::dropIfExists('pbcatfmt');
+                   Schema::dropIfExists('pbcattbl');
+                   Schema::dropIfExists('pbcatvld');
+                   Schema::dropIfExists('pre_natal_desarrollo_fino');
+                   Schema::dropIfExists('pre_natal_observaciones');
+                   Schema::dropIfExists('prena_exames_b');
+                   Schema::dropIfExists('presupuesto_operatorio');
+                   Schema::dropIfExists('presupuesto_operatorio_copy');
+                   Schema::dropIfExists('presupuesto_planti');
+                   Schema::dropIfExists('proveedor');
+                   Schema::dropIfExists('radiologia_obs');
+                   Schema::dropIfExists('radiologia_paciente');
+                   Schema::dropIfExists('radiologias');
+                   Schema::dropIfExists('recipe_detalle');
+                   Schema::dropIfExists('recipe_grupo');
+                   Schema::dropIfExists('recipe_grupo_detalle');
+                   Schema::dropIfExists('recipe2');
+                   Schema::dropIfExists('recipes');
+                   Schema::dropIfExists('recipes_pareja');
+                   Schema::dropIfExists('referencia');
+                   Schema::dropIfExists('reg_empl_frec_nomina');
+                   Schema::dropIfExists('reg_empl_tipo_nomina');
+                   Schema::dropIfExists('registro_empleados');
+                   Schema::dropIfExists('registro_empleados_eje');
+                   Schema::dropIfExists('registro_empleados_eje_detalle');
+                   Schema::dropIfExists('registro_operaciones');
+                   Schema::dropIfExists('reposo_paciente');
+                   Schema::dropIfExists('representante');
+                   Schema::dropIfExists('seg_emp');
+                   Schema::dropIfExists('sms_compra');
+                   Schema::dropIfExists('sms_enviados');
+                   Schema::dropIfExists('sms_envio_pac');
+                   Schema::dropIfExists('texto_doppler');
+                   Schema::dropIfExists('tipo_antecedente');
+                   Schema::dropIfExists('tipos_conceptos');
+                   Schema::dropIfExists('tipos_documentos');
+                   Schema::dropIfExists('tipos_examenes');
+                   Schema::dropIfExists('tipos_recipe');
+                   Schema::dropIfExists('ultra_abdominal');
+                   Schema::dropIfExists('ultra_mama');
+                   Schema::dropIfExists('ultra_prostatico');
+                   Schema::dropIfExists('ultra_testiculos');
+                   Schema::dropIfExists('ultra_tiroides_musculo');
+                   Schema::dropIfExists('vacunas_movimiento');
+                   Schema::dropIfExists('vademecum');
+                   Schema::dropIfExists('vademecum_m');
+                    
+                   Schema::enableForeignKeyConstraints();
+                    
+
+    }
+
+    /**
+     * Relaciones de las Tablas.
+     *
+     * @return void
+     */
+    public function relaciones()
+    {
+
+                   Schema::table('antece_paciente', function (Blueprint $table) {
+                   $table->foreign('codeantecedente','a')->references('codantecedente')->on('antecedentes');
+                   });
+                   
+                   Schema::table('antece_paciente', function (Blueprint $table) {
+                   $table->foreign('numhistoria','d')->references('numhistoria')->on('pacientes');
+                   });
+                   
+                   Schema::table('cola', function (Blueprint $table) {
+                   $table->foreign('numhistoria','')->references('numhistoria')->on('pacientes');
+                   });
+                   
+                   Schema::table('constancia_obs', function (Blueprint $table) {
+                   $table->foreign('numconsulta','QW')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('constancia_obs', function (Blueprint $table) {
+                   $table->foreign('numhistoria','QW')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('consultas', function (Blueprint $table) {
+                   $table->foreign('numhistoria','iueu')->references('numhistoria')->on('pacientes');
+                   });
+                   
+                   Schema::table('diagnostico_paciente', function (Blueprint $table) {
+                   $table->foreign('codediagnostico','SA')->references('codediagnostico')->on('diagnosticos');
+                   });
+                   
+                   Schema::table('diagnostico_paciente', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','DS')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('diagnostico_paciente', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','DS')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_doppler', function (Blueprint $table) {
+                   $table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_doppler', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_obstetrico', function (Blueprint $table) {
+                   $table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_obstetrico', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_obstetrico_tercer', function (Blueprint $table) {
+                   $table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_obstetrico_tercer', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_pelvico', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('eco_pelvico', function (Blueprint $table) {
+                   $table->foreign('numhistoria','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('ecocadiograma_fetal', function (Blueprint $table) {
+                   $table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('ecocadiograma_fetal', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_fisico', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SD')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_fisico', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SD')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_fisico_nuevo', function (Blueprint $table) {
+                   $table->foreign('consulta','AS')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_fisico_nuevo', function (Blueprint $table) {
+                   $table->foreign('historia','AS')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_obs', function (Blueprint $table) {
+                   $table->foreign('numconsulta','SAS')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_obs', function (Blueprint $table) {
+                   $table->foreign('numhistoria','SAS')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_paciente', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('examen_paciente', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('examenes', function (Blueprint $table) {
+                   $table->foreign('codetipo','WQW')->references('codetipo')->on('tipos_examenes');
+                   });
+                   
+                   Schema::table('hospitalizacion', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('hospitalizacion', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('imagen_consulta', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('imagen_consulta', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('imagen_pacientes', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SA')->references('numhistoria')->on('pacientes');
+                   });
+                   
+                   Schema::table('informe', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('informe', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('motivo_consulta_paciente', function (Blueprint $table) {
+                   $table->foreign('codemotivo','ASA')->references('codemotivo')->on('motivos_consulta');
+                   });
+                   
+                   Schema::table('motivo_consulta_paciente', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('motivo_consulta_paciente', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('pago_quiru', function (Blueprint $table) {
+                   $table->foreign('consecuti','')->references('consecuti')->on('baremo_quiru');
+                   });
+                   
+                   Schema::table('pre_natal_desarrollo_fino', function (Blueprint $table) {
+                   $table->foreign('gesta_clave','')->references('gesta_clave')->on('pre_natal_observaciones');
+                   });
+                   
+                   Schema::table('pre_natal_desarrollo_fino', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('historia')->on('pre_natal_observaciones');
+                   });
+                   
+                   Schema::table('pre_natal_observaciones', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('pacientes');
+                   });
+                   
+                   Schema::table('prena_exames_b', function (Blueprint $table) {
+                   $table->foreign('gesta_clave','')->references('gesta_clave')->on('pre_natal_observaciones');
+                   });
+                   
+                   Schema::table('prena_exames_b', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('historia')->on('pre_natal_observaciones');
+                   });
+                   
+                   Schema::table('radiologia_obs', function (Blueprint $table) {
+                   $table->foreign('numconsulta','DSS')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('radiologia_obs', function (Blueprint $table) {
+                   $table->foreign('numhistoria','DSS')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('radiologia_paciente', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','o')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('radiologia_paciente', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','o')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('recipes', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','uii')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('recipes', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SAS')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('recipes', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','uii')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('recipes', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SAS')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('referencia', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','iui')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('referencia', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','SA')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('referencia', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','iui')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('referencia', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','SA')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('reposo_paciente', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','yui')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('reposo_paciente', function (Blueprint $table) {
+                   $table->foreign('nroconsulta','ASA')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('reposo_paciente', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','yui')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('reposo_paciente', function (Blueprint $table) {
+                   $table->foreign('nrohistoria','ASA')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('representante', function (Blueprint $table) {
+                   $table->foreign('numhistoria','AS')->references('numhistoria')->on('pacientes');
+                   });
+                   
+                   Schema::table('ultra_abdominal', function (Blueprint $table) {
+                   $table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('ultra_abdominal', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('consultas');
+                   });
+                   
+                   Schema::table('ultra_mama', function (Blueprint $table) {
+                   $table->foreign('consulta','')->references('nroconsulta')->on('consultas');
+                   });
+                   
+                   Schema::table('ultra_mama', function (Blueprint $table) {
+                   $table->foreign('historia','')->references('numhistoria')->on('consultas');
+                   });
+                   
+
+    }
+
+}
+
